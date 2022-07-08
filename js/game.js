@@ -31,7 +31,7 @@ class Game {
         let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie arriba.png")
         this.pipeArr.push(newPipeUp)
   
-        let distanceBetweenPipes = newPipeUp.h + 100
+        let distanceBetweenPipes = newPipeUp.h + 101
         let randomPositionYDown = randomPositionYUp + distanceBetweenPipes
   
         let newPipeDown = new Pipe(randomPositionYDown, "./src/images/zombie arriba.png")
