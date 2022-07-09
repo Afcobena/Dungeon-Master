@@ -37,8 +37,19 @@ restartBtn.addEventListener("click", startGame)
 
 // addeventlistener para manejar el pollo.
 window.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
-    console.log("presiona barra espaciadora")
-    game.pollito.pollitoJump()
+  if (event.code === "KeyA" || event.code === "ArrowLeft") {
+    // aqui muevo al Champion a la izquierda
+    game.pollito.polliMoveLeft();
+  } else if (event.code === "KeyD" || event.code === "ArrowRight") {
+    // aqui muevo al Champion a la derecha
+    game.pollito.polliMoveRight();
+
+  } else if (event.code === "KeyW" || event.code === "ArrowUp") {
+    // aqui muevo al Champion a la derecha
+    game.pollito.polliMoveForward(); 
+  } else if (event.code === "KeyS" || event.code === "ArrowDown") {
+    // aqui muevo al Champion a la derecha
+    game.pollito.polliMoveDown(); 
   }
+
 })

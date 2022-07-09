@@ -31,7 +31,7 @@ class Game {
         let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie arriba.png")
         this.pipeArr.push(newPipeUp)
   
-        let distanceBetweenPipes = newPipeUp.h + 101
+        let distanceBetweenPipes = newPipeUp.h + 100
         let randomPositionYDown = randomPositionYUp + distanceBetweenPipes
   
         let newPipeDown = new Pipe(randomPositionYDown, "./src/images/zombie arriba.png")
@@ -74,7 +74,8 @@ class Game {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
   
       // 2. Movimientos y acciones de los elementos
-      this.pollito.pollitoGravity()
+      /* this.pollito.pollitoGravity() */
+      
       this.pollitoFloorCollision()
       this.pollitoPipeCollision()
       // let collitionCheck = this.pollito.pollitoFloorCollision()
