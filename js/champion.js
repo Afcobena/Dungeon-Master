@@ -7,8 +7,9 @@ class Pollito {
       this.y = 100; // posición eje Y
       this.w = 70; // width: ancho
       this.h = 100; // height: alto
-      this.speed = 1;
+      this.speed = 10;
       this.jumpSpeed = 40;
+
     }
   
     // aqui todos los metodos del pollito
@@ -21,21 +22,27 @@ class Pollito {
     pollitoGravity = () => {
       this.y = this.y + this.speed
     }
-  
-    // salto del pollo
-    pollitoJump = () => {
-      this.y = this.y - this.jumpSpeed
+
+    //-------------------------------------MOVIMIENTO EN 4 EJES----------------------------------
+    polliMoveDown = () => {
+        this.y += this.speed
+
+    }
+
+    polliMoveForward = () => {
+        this.y -= this.speed
+
+    }
+
+    polliMoveLeft = () => {
+        this.x -= this.speed
+
+    }
+
+    polliMoveRight = () => {
+        this.x += this.speed
+
     }
   
-    // colision pollo suelo (hecho en Game para simplificar)
-    // pollitoFloorCollision = () => {
-    //   if (this.y + this.h > canvas.height) {
-    //     console.log("El pollito llegó al suelo")
-    //     // ok, el juego se termina. isGameOn = false
-    //     return false
-    //   } else {
-    //     return true
-    //   }
-    // }
   
   }
