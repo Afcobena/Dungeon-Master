@@ -35,7 +35,7 @@ const startGame = () => {
 startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", startGame)
 
-// addeventlistener para manejar el pollo.
+// addeventlistener para manejar al Champion.
 window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     // aqui muevo al Champion a la izquierda

@@ -13,6 +13,7 @@ class Game {
       this.pipeArr = []
       // los tubos (y todas sus propiedades)
       // velocidad de los elementos
+      this.zombie = new Zombie()
   
       this.isGameOn = true;
       // el score (BONUS)
@@ -22,20 +23,20 @@ class Game {
   
     // los tubos aleatorios (cuando apareceran ) Spawn
     automaticAddPipes = () => {
-      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.width / 2) {
-        // 1. si el array está vacio
-        // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
-  
-        let randomPositionYUp = Math.random() * -200
-  
-        let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie arriba.png")
-        this.pipeArr.push(newPipeUp)
-  
-        let distanceBetweenPipes = newPipeUp.h + 100
-        let randomPositionYDown = randomPositionYUp + distanceBetweenPipes
-  
-        let newPipeDown = new Pipe(randomPositionYDown, "./src/images/zombie arriba.png")
-        this.pipeArr.push(newPipeDown)
+        if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.width / 2) {
+            // 1. si el array está vacio
+            // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
+      
+            let randomPositionYUp = Math.random() * -200
+      
+            let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie-from-right.png")
+            this.pipeArr.push(newPipeUp)
+      
+            let distanceBetweenPipes = newPipeUp.h + 100
+            let randomPositionYDown = randomPositionYUp + distanceBetweenPipes
+      
+            let newPipeDown = new Pipe(randomPositionYDown, "./src/images/zombie-from-right.png")
+            this.pipeArr.push(newPipeDown)
   
       }
     }
@@ -78,13 +79,9 @@ class Game {
       
       this.pollitoFloorCollision()
       this.pollitoPipeCollision()
-      // let collitionCheck = this.pollito.pollitoFloorCollision()
-      // if (collitionCheck === true) {
-      //   this.isGameOn = false
-      // }
-      // this.isGameOn = this.pollito.pollitoFloorCollision()
+      this.zombie.moveZombie()
+
       this.automaticAddPipes()
-      // this.pipeArr.pipeMovement()
       this.pipeArr.forEach((eachPipe) => {
         eachPipe.pipeMovement()
       })
@@ -96,6 +93,7 @@ class Game {
       this.pipeArr.forEach((eachPipe) => {
         eachPipe.drawPipe()
       })
+      this.zombie.drawZombie()
   
       // 4. Efecto de recursión
       if (this.isGameOn === true) {
