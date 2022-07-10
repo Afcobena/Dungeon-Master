@@ -3,8 +3,8 @@ class Pollito {
     // aqui todas las propiedades del pollito
     this.image = new Image()
     this.image.src = "./src/images/champion.png"
-    this.x = 390; // posición eje X
-    this.y = 350; // posición eje Y
+    this.x = 590; // posición eje X
+    this.y = 550; // posición eje Y
     this.w = 70; // width: ancho
     this.h = 100; // height: alto
     this.speed = 10;

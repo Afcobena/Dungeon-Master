@@ -11,6 +11,7 @@ class Game {
     this.pollito = new Pollito() // aqui creo un nuevo OBJ de la clase Pollito
     // this.pipe = new Pipe()
     this.pipeArr = []
+    this.zombieLeftArr = []
     // los tubos (y todas sus propiedades)
     // velocidad de los elementos
     this.zombieUp = new ZombieUp()
@@ -25,11 +26,11 @@ class Game {
 
   // los tubos aleatorios (cuando apareceran ) Spawn
   automaticAddPipes = () => {
-      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.width / 2) {
+      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.width / 8) {
           // 1. si el array está vacio
           // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
     
-          let randomPositionYUp = Math.random() * -200
+          let randomPositionYUp = Math.random() * 200
     
           let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie-from-right.png")
           this.pipeArr.push(newPipeUp)
@@ -42,6 +43,25 @@ class Game {
 
     }
   }
+
+  automaticAddEnemys = () => {
+    if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].x < 0 / 2) {
+        // 1. si el array está vacio
+        // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
+  
+        let randomPositionYUp = Math.random() * 300      
+  
+        let newZombieLeftUp = new ZombieLeft(randomPositionYUp, "./src/images/zombie-from-left.png")
+        this.zombieLeftArr.push(newZombieLeftUp)
+  
+        let distanceBetweenZombies = newZombieLeftUp.h + 100
+        let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
+  
+        let newZombieLeftDown = new ZombieLeft(randomPositionYDown, "./src/images/zombie-from-left.png")
+        this.zombieLeftArr.push(newZombieLeftDown)
+
+  }
+}
 
   gameOver = () => {
       this.isGameOn = false;
@@ -71,6 +91,7 @@ class Game {
     }
   }
 
+
   gameLoop = () => {
     // console.log("juego andando");
     // 1. Limpiamos el canvas
@@ -83,11 +104,17 @@ class Game {
     this.pollitoPipeCollision()
     this.zombieUp.moveZombieUp()
     this.zombieDown.moveZombieDown()
-    this.zombieLeft.moveZombieLeft()
+    /* this.zombieLeft.moveZombieLeft() */
 
     this.automaticAddPipes()
+    this.automaticAddEnemys()
+
     this.pipeArr.forEach((eachPipe) => {
       eachPipe.pipeMovement()
+    })
+
+    this.zombieLeftArr.forEach((eachZombie) => {
+      eachZombie.moveZombieLeft()
     })
 
     // 3. Dibujar los elementos
@@ -97,9 +124,13 @@ class Game {
     this.pipeArr.forEach((eachPipe) => {
       eachPipe.drawPipe()
     })
+    this.zombieLeftArr.forEach((eachZombie) => {
+      eachZombie.drawZombieLeft()
+    })
+
     this.zombieUp.drawZombieUp()
     this.zombieDown.drawZombieDown()
-    this.zombieLeft.drawZombieLeft()
+    /* this.zombieLeft.drawZombieLeft() */
 
     // 4. Efecto de recursión
     if (this.isGameOn === true) {

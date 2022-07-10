@@ -1,13 +1,15 @@
-class ZombieLeft {
-    constructor(yParam, srcParam) {
+class Enemy {
+    constructor(xParam, yParam, srcParam) {
       // aqui todas las propiedades de los tubos
       this.image = new Image();
       this.image.src = srcParam;
-      this.x = 0;
+      this.x = xParam;
       this.y = yParam;
-      this.w = 70;
-      this.h = 100/* canvas.height * 0.7 */;
-      this.speed = 3;
+      this.w = 60;
+      this.h = 90;
+      this.speed = 2;
+      this.directionRight = this.x -= this.speed;
+
     }
   
     // aqui todos los metodos de los tubos
