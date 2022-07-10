@@ -1,10 +1,10 @@
 class ZombieUp {
-  constructor() {
+  constructor(yParam, srcParam) {
     // aqui todas las propiedades de los tubos
     this.image = new Image();
-    this.image.src = "./src/images/zombie arriba.png";
-    this.x = 400;
-    this.y = 100;
+    this.image.src = srcParam;
+    this.x = 0;
+    this.y = yParam;
     this.w = 70;
     this.h = 100/* canvas.height * 0.7 */;
     this.speed = 3;

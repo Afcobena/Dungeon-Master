@@ -11,8 +11,8 @@ class Game {
     this.pipeArr = []
     this.zombieLeftArr = []
     this.zombieDownArr = []
+    this.zombieUpArr = []
 
-    this.zombieUp = new ZombieUp()
 
     this.isGameOn = true;
     // el score (BONUS)
@@ -41,7 +41,7 @@ class Game {
   }
 
   automaticAddEnemysLeft = () => {
-    if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].x < 0 / 2) {
+    if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].y < canvas.width / 2) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
   
@@ -59,23 +59,42 @@ class Game {
   }
 }
 
-automaticAddEnemysDown = () => {
-  if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].x < canvas.width / 2) {
-      // 1. si el array está vacio
-      // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
+  automaticAddEnemysDown = () => {
+    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 400 / 6) {
+        // 1. si el array está vacio
+        // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
-      let randomPositionYUp = Math.random() * 800
+        let randomPositionYUp = Math.random() * 800
 
-      let newZombieDownUp = new ZombieDown(randomPositionYUp, "./src/images/zombie-from-down.png")
-      this.zombieDownArr.push(newZombieDownUp)
+        let newZombieDownUp = new ZombieDown(randomPositionYUp, "./src/images/zombie-from-down.png")
+        this.zombieDownArr.push(newZombieDownUp)
 
-      let distanceBetweenZombies = newZombieDownUp.h + 400
-      let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
+        let distanceBetweenZombies = newZombieDownUp.h + 400
+        let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
 
-      let newZombieDownDown = new ZombieDown(randomPositionYDown, "./src/images/zombie-from-down.png")
-      this.zombieDownArr.push(newZombieDownDown)
+        let newZombieDownDown = new ZombieDown(randomPositionYDown, "./src/images/zombie-from-down.png")
+        this.zombieDownArr.push(newZombieDownDown)
 
+  }
 }
+
+  automaticAddEnemysUp = () => {
+    if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].y < canvas.height / 8) {
+        // 1. si el array está vacio
+        // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
+
+        let randomPositionYUp = Math.random() * 100
+
+        let newZombieUpUp = new ZombieUp(randomPositionYUp, "./src/images/zombie arriba.png")
+        this.zombieUpArr.push(newZombieUpUp)
+
+        let distanceBetweenZombies = newZombieUpUp.h + 100
+        let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
+
+        let newZombieUpDown = new ZombieUp(randomPositionYDown, "./src/images/zombie arriba.png")
+        this.zombieUpArr.push(newZombieUpDown)
+
+  }
 }
 
   gameOver = () => {
@@ -116,13 +135,14 @@ automaticAddEnemysDown = () => {
     
     this.pollitoFloorCollision()
     this.pollitoPipeCollision()
-    this.zombieUp.moveZombieUp()
+    /* this.zombieUp.moveZombieUp() */
     /* this.zombieDown.moveZombieDown() */
     /* this.zombieLeft.moveZombieLeft() */
 
     this.automaticAddPipes()
     this.automaticAddEnemysLeft()
     this.automaticAddEnemysDown()
+    this.automaticAddEnemysUp()
 
     this.pipeArr.forEach((eachPipe) => {
       eachPipe.pipeMovement()
@@ -134,6 +154,10 @@ automaticAddEnemysDown = () => {
 
     this.zombieDownArr.forEach((eachZombie) => {
       eachZombie.moveZombieDown()
+    })
+
+    this.zombieUpArr.forEach((eachZombie) => {
+      eachZombie.moveZombieUp()
     })
 
     // 3. Dibujar los elementos
@@ -153,7 +177,11 @@ automaticAddEnemysDown = () => {
       eachZombie.drawZombieDown()
     })
 
-    this.zombieUp.drawZombieUp()
+    this.zombieUpArr.forEach((eachZombie) => {
+      eachZombie.drawZombieUp()
+    })
+
+    /* this.zombieUp.drawZombieUp() */
     /* this.zombieDown.drawZombieDown() */
     /* this.zombieLeft.drawZombieLeft() */
 
