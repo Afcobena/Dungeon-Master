@@ -7,7 +7,7 @@ class Pollito {
     this.y = 550; // posición eje Y
     this.w = 70; // width: ancho
     this.h = 100; // height: alto
-    this.speed = 10;
+    this.speed = 20;
     this.jumpSpeed = 40;
 
   }

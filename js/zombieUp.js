@@ -3,7 +3,7 @@ class ZombieUp {
     // aqui todas las propiedades de los tubos
     this.image = new Image();
     this.image.src = srcParam;
-    this.x = 0;
+    this.x = 400;
     this.y = yParam;
     this.w = 70;
     this.h = 100/* canvas.height * 0.7 */;
