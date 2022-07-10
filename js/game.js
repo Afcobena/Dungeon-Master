@@ -14,6 +14,8 @@ class Game {
     // los tubos (y todas sus propiedades)
     // velocidad de los elementos
     this.zombieUp = new ZombieUp()
+    this.zombieDown = new ZombieDown()
+    this.zombieLeft = new ZombieLeft()
 
     this.isGameOn = true;
     // el score (BONUS)
@@ -80,6 +82,8 @@ class Game {
     this.pollitoFloorCollision()
     this.pollitoPipeCollision()
     this.zombieUp.moveZombieUp()
+    this.zombieDown.moveZombieDown()
+    this.zombieLeft.moveZombieLeft()
 
     this.automaticAddPipes()
     this.pipeArr.forEach((eachPipe) => {
@@ -94,6 +98,8 @@ class Game {
       eachPipe.drawPipe()
     })
     this.zombieUp.drawZombieUp()
+    this.zombieDown.drawZombieDown()
+    this.zombieLeft.drawZombieLeft()
 
     // 4. Efecto de recursión
     if (this.isGameOn === true) {
