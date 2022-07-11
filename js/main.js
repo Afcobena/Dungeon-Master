@@ -37,9 +37,27 @@ restartBtn.addEventListener("click", startGame)
 
 // addeventlistener para manejar al Champion.
 window.addEventListener("keydown", (event) => {
+  switch (event.code) {
+    case "KeyW":
+      game.rogueKnight.rogueKnightMoveForward();
+      break;
+    case "KeyD":
+      game.rogueKnight.rogueKnightMoveRight();
+      break;
+    case "KeyS":
+        game.rogueKnight.rogueKnightMoveDown(); 
+      break;
+    case "KeyA":
+        game.rogueKnight.rogueKnightMoveLeft();
+      break;
+  }
+
+})
+
+/* window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     // aqui muevo al Champion a la izquierda
-    game.rogueKnight.rogueKnightMoveLeft();
+    game.rogueKnight.allMovesKeyDown();
   } else if (event.code === "KeyD" || event.code === "ArrowRight") {
     // aqui muevo al Champion a la derecha
     game.rogueKnight.rogueKnightMoveRight();
@@ -52,31 +70,9 @@ window.addEventListener("keydown", (event) => {
     game.rogueKnight.rogueKnightMoveDown(); 
   }
 
-})
-document.onkeydown = function(event) {
-  if(event == null) {
-      teclap = window.event.keycode;
-  } else {
-      tecla = event.keycode;
+}) */
 
-  } switch(teclap) {
-      case 40:
-          enemyY = enemyY + 10;
-          indiceY = 0;
-      break;
-      case 37:
-          enemyX = enemyX - 10;
-          indiceY = - 1;
-      break;
-      case 38:
-          enemyY = enemyY - 10;
-          indiceY = - 2;
-      break;
-      case 39:
-          enemyX = enemyX + 10;
-          indiceY = - 3;
-      break;
-      default:
-          break;
-  }
-}
+
+
+
+
