@@ -12,6 +12,7 @@ class Game {
     this.zombieLeftArr = []
     this.zombieDownArr = []
     this.zombieUpArr = []
+    
 
 
     this.isGameOn = true;
@@ -22,77 +23,53 @@ class Game {
 
   // los tubos aleatorios (cuando apareceran ) Spawn
   automaticAddPipes = () => {
-      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.width / 2) {
+      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < 100 / 4) {
           // 1. si el array está vacio
           // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
     
-          let randomPositionYUp = Math.random() * 200
+          let randomPositionYUp = Math.random() * (canvas.height + 150 && canvas.height - 150) 
     
           let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie-from-right.png")
           this.pipeArr.push(newPipeUp)
-    
-          let distanceBetweenPipes = newPipeUp.h + 100
-          let randomPositionYDown = randomPositionYUp + distanceBetweenPipes
-    
-          let newPipeDown = new Pipe(randomPositionYDown, "./src/images/zombie-from-right.png")
-          this.pipeArr.push(newPipeDown)
 
     }
   }
 
   automaticAddEnemysLeft = () => {
-    if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].x > canvas.width / 2) {
+    if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].x > 600 / 2) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
   
-        let randomPositionYUp = Math.random() * 300      
+        let randomPositionYUp = Math.random() * (canvas.height + 150 && canvas.height - 150)      
   
         let newZombieLeftUp = new ZombieLeft(randomPositionYUp, "./src/images/zombie-from-left.png")
         this.zombieLeftArr.push(newZombieLeftUp)
-  
-        let distanceBetweenZombies = newZombieLeftUp.h + 100
-        let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
-  
-        let newZombieLeftDown = new ZombieLeft(randomPositionYDown, "./src/images/zombie-from-left.png")
-        this.zombieLeftArr.push(newZombieLeftDown)
 
   }
 }
 
   automaticAddEnemysDown = () => {
-    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 400) {
+    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 600 / 4) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
-        let randomPositionYUp = Math.random() * 800
+        let randomPositionXUp = Math.random() *  (canvas.height + 150 && canvas.width - 150) 
 
-        let newZombieDownUp = new ZombieDown(randomPositionYUp, "./src/images/zombie-from-down.png")
+        let newZombieDownUp = new ZombieDown(randomPositionXUp, "./src/images/zombie-from-down.png")
         this.zombieDownArr.push(newZombieDownUp)
-
-        let distanceBetweenZombies = newZombieDownUp.h + 100
-        let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
-
-        let newZombieDownDown = new ZombieDown(randomPositionYDown, "./src/images/zombie-from-down.png")
-        this.zombieDownArr.push(newZombieDownDown)
 
   }
 }
 
   automaticAddEnemysUp = () => {
-    if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].y > 400) {
+    if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].y > 600 / 2) {
       // 1. si el array está vacio
       // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
-      let randomPositionXUp = Math.random() * 100
+      let randomPositionXUp = Math.random() * (canvas.width + 190 && canvas.width - 190) 
 
       let newZombieUpUp = new ZombieUp(randomPositionXUp, "./src/images/zombie arriba.png")
       this.zombieUpArr.push(newZombieUpUp)
-
-      let distanceBetweenZombies = newZombieUpUp.h + 400
-      let randomPositionXDown = randomPositionXUp + distanceBetweenZombies
-
-      let newZombieUpDown = new ZombieUp(randomPositionXDown, "./src/images/zombie arriba.png")
-      this.zombieUpArr.push(newZombieUpDown)
 
   }
 }
@@ -115,15 +92,6 @@ class Game {
 
       })
   }
-
-
-/*   pollitoFloorCollision = () => {
-    if (this.pollito.y + this.pollito.h > canvas.height) {
-      console.log("El pollito llegó al suelo")
-      // ok, el juego se termina. isGameOn = false
-      this.gameOver()
-    }
-  } */
 
 
   gameLoop = () => {

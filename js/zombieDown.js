@@ -1,10 +1,10 @@
 class ZombieDown {
-    constructor(yParam, srcParam) {
+    constructor(xParam, srcParam) {
       // aqui todas las propiedades de los tubos
       this.image = new Image();
       this.image.src = srcParam;
-      this.x = 360;
-      this.y = yParam;
+      this.x = xParam;
+      this.y = canvas.height;
       this.w = 70;
       this.h = 100/* canvas.height * 0.7 */;
       this.speed = 3;

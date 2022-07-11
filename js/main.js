@@ -36,7 +36,17 @@ startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", startGame)
 
 // addeventlistener para manejar al Champion.
-window.addEventListener("keydown", (event) => {
+/* window.addEventListener("keydown", (event) => {
+  game.rogueKnight.allMovesKeyDown()
+
+})
+
+
+window.addEventListener("keyup", (event) => {
+  game.rogueKnight.allMovesKeyUp()
+}) */
+
+/* window.addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
       game.rogueKnight.rogueKnightMoveForward();
@@ -52,25 +62,38 @@ window.addEventListener("keydown", (event) => {
       break;
   }
 
-})
+}) */
 
-/* window.addEventListener("keydown", (event) => {
+
+/* allMovesKeyDown = (e) => {
+  if(e.keyCode == 39) key.right = false;
+  if(e.keyCode == 37) key.left = false;
+  if(e.keyCode == 38) key.up = false;
+  if(e.keyCode == 40) key.down = false;
+} */
+
+window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     // aqui muevo al Champion a la izquierda
     game.rogueKnight.allMovesKeyDown();
-  } else if (event.code === "KeyD" || event.code === "ArrowRight") {
+  } 
+  if (event.code === "KeyD" || event.code === "ArrowRight") {
     // aqui muevo al Champion a la derecha
     game.rogueKnight.rogueKnightMoveRight();
 
-  } else if (event.code === "KeyW" || event.code === "ArrowUp") {
+  } 
+  if (event.code === "KeyW" || event.code === "ArrowUp") {
     // aqui muevo al Champion a la derecha
     game.rogueKnight.rogueKnightMoveForward(); 
-  } else if (event.code === "KeyS" || event.code === "ArrowDown") {
+
+  } 
+  if (event.code === "KeyS" || event.code === "ArrowDown") {
     // aqui muevo al Champion a la derecha
     game.rogueKnight.rogueKnightMoveDown(); 
   }
+  
 
-}) */
+})
 
 
 

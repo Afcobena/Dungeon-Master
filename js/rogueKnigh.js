@@ -9,6 +9,13 @@ class RogueKnight {
     this.h = 100; // height: alto
     this.speedX = 20;
     this.speedY = 20;
+    this.teclasPress = {
+      ArrowLeft: false,
+      ArrowRight: false,
+      ArrowUp: false,
+      ArrowDown: false
+      
+    }
 
   }
 
@@ -43,6 +50,43 @@ class RogueKnight {
       this.x += this.speedX
 
   }
+
+/*   allMovesKeyDown = (event) => {
+    if(event.keyCode == 39) {
+      key.right = true;
+      key.left = false;
+      player.direction = 'right';
+    }
+    if(event.keyCode == 37) {
+      key.right = false;
+      key.left = true;
+      player.direction = 'left';
+    }
+    if(event.keyCode == 38) {
+      key.up = true;
+      key.down = false;
+    }
+    if(event.keyCode == 40) {
+      key.up = false;
+      key.down = true;
+    }
+  }
+
+  allMovesKeyUp = (event) => {
+      if(event.keyCode == 39) key.right = false;
+      if(event.keyCode == 37) key.left = false;
+      if(event.keyCode == 38) key.up = false;
+      if(event.keyCode == 40) key.down = false;
+    }
+   */
+
+
+
+
+
+
+
+
 
 /* 
   allMovesKeyDown = (e) => {
