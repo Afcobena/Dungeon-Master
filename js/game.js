@@ -6,8 +6,8 @@ class Game {
 
     // imagen de fondo
     this.dungeon = new Image();
-    this.dungeon.src = "./src/images/bg2.png";
-    this.pollito = new Pollito()
+    this.dungeon.src = "./src/images/BG2 pixel art.png";
+    this.rogueKnight = new RogueKnight()
     this.pipeArr = []
     this.zombieLeftArr = []
     this.zombieDownArr = []
@@ -60,7 +60,7 @@ class Game {
 }
 
   automaticAddEnemysDown = () => {
-    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < canvas.height / 4) {
+    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 200) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
@@ -79,7 +79,7 @@ class Game {
 }
 
   automaticAddEnemysUp = () => {
-    if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].x <= canvas.height / 6) {
+    if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].y > 400) {
       // 1. si el array está vacio
       // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
@@ -88,7 +88,7 @@ class Game {
       let newZombieUpUp = new ZombieUp(randomPositionYUp, "./src/images/zombie arriba.png")
       this.zombieUpArr.push(newZombieUpUp)
 
-      let distanceBetweenZombies = newZombieUpUp.h + 100
+      let distanceBetweenZombies = newZombieUpUp.h + 400
       let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
 
       let newZombieUpDown = new ZombieUp(randomPositionYDown, "./src/images/zombie arriba.png")
@@ -103,13 +103,13 @@ class Game {
       gameOverScreenDOM.style.display = "flex"
   }
 
-  pollitoPipeCollision = () => {
+  rogueKnightEnemyCollision = () => {
       this.pipeArr.forEach((eachPipe) => {
-          if (eachPipe.x < this.pollito.x + this.pollito.w &&
-              eachPipe.x + eachPipe.w > this.pollito.x &&
-              eachPipe.y < this.pollito.y + this.pollito.h &&
-              eachPipe.h + eachPipe.y > this.pollito.y) {
-                  console.log("se estampó")
+          if (eachPipe.x < this.rogueKnigh.x + this.rogueKnigh.w &&
+              eachPipe.x + eachPipe.w > this.rogueKnigh.x &&
+              eachPipe.y < this.rogueKnigh.y + this.rogueKnigh.h &&
+              eachPipe.h + eachPipe.y > this.rogueKnigh.y) {
+                  console.log("Braaaiiiinsss")
                   this.gameOver()
               }
 
@@ -117,13 +117,13 @@ class Game {
   }
 
 
-  pollitoFloorCollision = () => {
+/*   pollitoFloorCollision = () => {
     if (this.pollito.y + this.pollito.h > canvas.height) {
       console.log("El pollito llegó al suelo")
       // ok, el juego se termina. isGameOn = false
       this.gameOver()
     }
-  }
+  } */
 
 
   gameLoop = () => {
@@ -133,11 +133,8 @@ class Game {
 
     // 2. Movimientos y acciones de los elementos
     
-    this.pollitoFloorCollision()
-    this.pollitoPipeCollision()
-    /* this.zombieUp.moveZombieUp() */
-    /* this.zombieDown.moveZombieDown() */
-    /* this.zombieLeft.moveZombieLeft() */
+    /* this.pollitoFloorCollision() */
+    this.rogueKnightEnemyCollision()
 
     this.automaticAddPipes()
     this.automaticAddEnemysLeft()
@@ -163,7 +160,8 @@ class Game {
     // 3. Dibujar los elementos
 
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
-    this.pollito.drawPollito()
+
+    this.rogueKnight.drawRogueKnight();
 
     this.pipeArr.forEach((eachPipe) => {
       eachPipe.drawPipe()
@@ -180,10 +178,6 @@ class Game {
     this.zombieUpArr.forEach((eachZombie) => {
       eachZombie.drawZombieUp()
     })
-
-    /* this.zombieUp.drawZombieUp() */
-    /* this.zombieDown.drawZombieDown() */
-    /* this.zombieLeft.drawZombieLeft() */
 
     // 4. Efecto de recursión
     if (this.isGameOn === true) {

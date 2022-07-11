@@ -1,4 +1,4 @@
-class Pollito {
+class RogueKnight {
   constructor() {
     // aqui todas las propiedades del pollito
     this.image = new Image()
@@ -14,32 +14,32 @@ class Pollito {
 
   // aqui todos los metodos del pollito
 
-  drawPollito = () => {
+  drawRogueKnight = () => {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
   }
 
   // gravedad del pollo
-  pollitoGravity = () => {
+/*   pollitoGravity = () => {
     this.y = this.y + this.speed
-  }
+  } */
 
   //-------------------------------------MOVIMIENTO EN 4 EJES----------------------------------
-  polliMoveDown = () => {
+  rogueKnightMoveDown = () => {
       this.y += this.speed
 
   }
 
-  polliMoveForward = () => {
+  rogueKnightMoveForward = () => {
       this.y -= this.speed
 
   }
 
-  polliMoveLeft = () => {
+  rogueKnightMoveLeft = () => {
       this.x -= this.speed
 
   }
 
-  polliMoveRight = () => {
+  rogueKnightMoveRight = () => {
       this.x += this.speed
 
   }

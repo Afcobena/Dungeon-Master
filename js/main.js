@@ -39,17 +39,17 @@ restartBtn.addEventListener("click", startGame)
 window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     // aqui muevo al Champion a la izquierda
-    game.pollito.polliMoveLeft();
+    game.rogueKnight.rogueKnightMoveLeft();
   } else if (event.code === "KeyD" || event.code === "ArrowRight") {
     // aqui muevo al Champion a la derecha
-    game.pollito.polliMoveRight();
+    game.rogueKnight.rogueKnightMoveRight();
 
   } else if (event.code === "KeyW" || event.code === "ArrowUp") {
     // aqui muevo al Champion a la derecha
-    game.pollito.polliMoveForward(); 
+    game.rogueKnight.rogueKnightMoveForward(); 
   } else if (event.code === "KeyS" || event.code === "ArrowDown") {
     // aqui muevo al Champion a la derecha
-    game.pollito.polliMoveDown(); 
+    game.rogueKnight.rogueKnightMoveDown(); 
   }
 
 })
