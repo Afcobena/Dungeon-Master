@@ -60,7 +60,7 @@ class Game {
 }
 
   automaticAddEnemysDown = () => {
-    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 200) {
+    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 400) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
@@ -69,7 +69,7 @@ class Game {
         let newZombieDownUp = new ZombieDown(randomPositionYUp, "./src/images/zombie-from-down.png")
         this.zombieDownArr.push(newZombieDownUp)
 
-        let distanceBetweenZombies = newZombieDownUp.h + 400
+        let distanceBetweenZombies = newZombieDownUp.h + 100
         let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
 
         let newZombieDownDown = new ZombieDown(randomPositionYDown, "./src/images/zombie-from-down.png")
@@ -83,15 +83,15 @@ class Game {
       // 1. si el array está vacio
       // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
-      let randomPositionYUp = Math.random() * 100
+      let randomPositionXUp = Math.random() * 100
 
-      let newZombieUpUp = new ZombieUp(randomPositionYUp, "./src/images/zombie arriba.png")
+      let newZombieUpUp = new ZombieUp(randomPositionXUp, "./src/images/zombie arriba.png")
       this.zombieUpArr.push(newZombieUpUp)
 
       let distanceBetweenZombies = newZombieUpUp.h + 400
-      let randomPositionYDown = randomPositionYUp + distanceBetweenZombies
+      let randomPositionXDown = randomPositionXUp + distanceBetweenZombies
 
-      let newZombieUpDown = new ZombieUp(randomPositionYDown, "./src/images/zombie arriba.png")
+      let newZombieUpDown = new ZombieUp(randomPositionXDown, "./src/images/zombie arriba.png")
       this.zombieUpArr.push(newZombieUpDown)
 
   }
@@ -134,7 +134,7 @@ class Game {
     // 2. Movimientos y acciones de los elementos
     
     /* this.pollitoFloorCollision() */
-    this.rogueKnightEnemyCollision()
+    this.rogueKnightEnemyCollision
 
     this.automaticAddPipes()
     this.automaticAddEnemysLeft()
