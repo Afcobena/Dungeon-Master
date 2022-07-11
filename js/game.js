@@ -23,7 +23,7 @@ class Game {
 
   // los tubos aleatorios (cuando apareceran ) Spawn
   automaticAddPipes = () => {
-      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < 100 / 4) {
+      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.height / 4) {
           // 1. si el array está vacio
           // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
     
@@ -49,11 +49,11 @@ class Game {
 }
 
   automaticAddEnemysDown = () => {
-    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < 600 / 4) {
+    if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < canvas.height / 4) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
 
-        let randomPositionXUp = Math.random() *  (canvas.height + 150 && canvas.width - 150) 
+        let randomPositionXUp = Math.random() *  (canvas.width + 150 && canvas.width - 150) 
 
         let newZombieDownUp = new ZombieDown(randomPositionXUp, "./src/images/zombie-from-down.png")
         this.zombieDownArr.push(newZombieDownUp)

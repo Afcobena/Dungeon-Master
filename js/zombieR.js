@@ -7,7 +7,7 @@ class Pipe {
     this.y = yParam;
     this.w = 55;
     this.h = 90/* canvas.height * 0.7 */;
-    this.speed = 3;
+    this.speed = 4;
   }
 
   // aqui todos los metodos de los tubos

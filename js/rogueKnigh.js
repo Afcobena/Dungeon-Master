@@ -88,34 +88,3 @@ class RogueKnight {
 
 
 
-/* 
-  allMovesKeyDown = (e) => {
-    if(e.keyCode == 39) {
-      key.right = true;
-      key.left = false;
-      player.direction = 'right';
-    }
-    if(e.keyCode == 37) {
-      key.right = false;
-      key.left = true;
-      player.direction = 'left';
-    }
-    if(e.keyCode == 38) {
-      key.up = true;
-      key.down = false;
-    }
-    if(e.keyCode == 40) {
-      key.up = false;
-      key.down = true;
-    }
-  }
-
-  allMovesKeyDown = (e) => {
-    if(e.keyCode == 39) key.right = false;
-    if(e.keyCode == 37) key.left = false;
-    if(e.keyCode == 38) key.up = false;
-    if(e.keyCode == 40) key.down = false;
-  } */
-
-
-}
