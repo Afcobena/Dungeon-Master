@@ -131,55 +131,56 @@ class Game {
 
   }
 
-  /* enemySpearCollision = () => {
-    this.pipeArr.forEach((eachPipe) => {
-          if (eachPipe.x < this.rogueKnight.x + this.rogueKnight.w &&
-              eachPipe.x + eachPipe.w > this.rogueKnight.x &&
-              eachPipe.y < this.rogueKnight.y + this.rogueKnight.h &&
-              eachPipe.h + eachPipe.y > this.rogueKnight.y) {
-                  console.log("Braaaiiiinsss")
-                  this.gameOver()
-              }
+/*   enemiesSpearCollision = () => {
+    this.spearArr.forEach((eachSpear) => {
+      if (eachSpear.x < this.zombieUp.x + this.zombieUp.w &&
+          eachSpear.x + eachSpear.w > this.zombieUp.x &&
+          eachSpear.y < this.zombieUp.y + this.zombieUp.h &&
+          eachSpear.h + eachSpear.y > this.zombieUp.y) {
+            this.zombieUpArr.forEach((eachZombie) => {
+              eachZombie.moveZombieUp()
+            })
+          }
 
-      })
+    })
+    
+    
 
-      this.zombieLeftArr.forEach((eachZombie) => {
-        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
-            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
-            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
-            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
-                console.log("Braaaiiiinsss")
-                this.gameOver()
-            }
+    this.spearArr.forEach((eachSpear) => {
+      if (eachSpear.x < this.zombieRight.x + this.zombieRight.w &&
+          eachSpear.x + eachSpear.w > this.zombieRight.x &&
+          eachSpear.y < this.zombieRight.y + this.zombieRight.h &&
+          eachSpear.h + eachSpear.y > this.zombieRight.y) {
+              console.log("Braaaiiiinsss")
+              this.gameOver()
+          }
 
-      })
+    })
 
-      this.zombieDownArr.forEach((eachZombie) => {
-        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
-            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
-            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
-            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
-                console.log("Braaaiiiinsss")
-                this.gameOver()
-            }
+    this.spearArr.forEach((eachSpear) => {
+      if (eachSpear.x < this.zombieDown.x + this.zombieDown.w &&
+          eachSpear.x + eachSpear.w > this.zombieDown.x &&
+          eachSpear.y < this.zombieDown.y + this.zombieDown.h &&
+          eachSpear.h + eachSpear.y > this.zombieDown.y) {
+              console.log("Braaaiiiinsss")
+              this.gameOver()
+          }
 
-      })
+    })
 
-      this.zombieUpArr.forEach((eachZombie) => {
-        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
-            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
-            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
-            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
-                console.log("Braaaiiiinsss")
-                this.gameOver()
-            }
+    this.spearArr.forEach((eachSpear) => {
+      if (eachSpear.x < this.zombieLeft.x + this.zombieLeft.w &&
+          eachSpear.x + eachSpear.w > this.zombieLeft.x &&
+          eachSpear.y < this.zombieLeft.y + this.zombieLeft.h &&
+          eachSpear.h + eachSpear.y > this.zombieLeft.y) {
+              console.log("Braaaiiiinsss")
+              this.gameOver()
+          }
 
-      })
+    })
 
 
-  }
- */
-
+} */
   gameLoop = () => {
     // console.log("juego andando");
     // 1. Limpiamos el canvas
@@ -198,6 +199,10 @@ class Game {
     this.automaticAddEnemiesLeft()
     this.automaticAddEnemiesDown()
     this.automaticAddEnemiesUp()
+
+/*     this.spearArr.forEach((eachSpear) => {
+      eachSpear.spearMovement()
+    }) */
 
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.moveZombieRight()
@@ -220,7 +225,10 @@ class Game {
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
 
     this.rogueKnight.drawRogueKnight();
-    /* this.spear.drawSpear(); */
+    
+/*     this.spearArr.forEach((eachSpear) => {
+      eachSpear.drawSpear()
+    }) */
 
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.drawZombieRight()
@@ -247,10 +255,4 @@ class Game {
   };
 
   
-  // colision pollo tube
-  
-  // efecto de gameover
-  
-
-  // boton de Pausa (MEGA BONUS)
 }
