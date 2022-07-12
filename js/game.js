@@ -27,7 +27,7 @@ class Game {
           // 1. si el array está vacio
           // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
     
-          let randomPositionYUp = Math.random() * (canvas.height + 150 && canvas.height - 150) 
+          let randomPositionYUp = Math.random() * (canvas.height + 150 && canvas.height - 150)
     
           let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie-from-right.png")
           this.pipeArr.push(newPipeUp)
@@ -68,7 +68,7 @@ class Game {
 
       let randomPositionXUp = Math.random() * (canvas.width + 190 && canvas.width - 190) 
 
-      let newZombieUpUp = new ZombieUp(randomPositionXUp, "./src/images/zombie arriba.png")
+      let newZombieUpUp = new ZombieUp(randomPositionXUp, "./src/images/zombie-from-up.png")
       this.zombieUpArr.push(newZombieUpUp)
 
   }
@@ -82,15 +82,50 @@ class Game {
 
   rogueKnightEnemyCollision = () => {
       this.pipeArr.forEach((eachPipe) => {
-          if (eachPipe.x < this.rogueKnigh.x + this.rogueKnigh.w &&
-              eachPipe.x + eachPipe.w > this.rogueKnigh.x &&
-              eachPipe.y < this.rogueKnigh.y + this.rogueKnigh.h &&
-              eachPipe.h + eachPipe.y > this.rogueKnigh.y) {
+          if (eachPipe.x < this.rogueKnight.x + this.rogueKnight.w &&
+              eachPipe.x + eachPipe.w > this.rogueKnight.x &&
+              eachPipe.y < this.rogueKnight.y + this.rogueKnight.h &&
+              eachPipe.h + eachPipe.y > this.rogueKnight.y) {
                   console.log("Braaaiiiinsss")
                   this.gameOver()
               }
 
       })
+
+      this.zombieLeftArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+      this.zombieDownArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+      this.zombieUpArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+
   }
 
 
@@ -101,8 +136,12 @@ class Game {
 
     // 2. Movimientos y acciones de los elementos
     
-    /* this.pollitoFloorCollision() */
-    this.rogueKnightEnemyCollision
+    this.rogueKnight.rogueKnightMoveDown()
+    this.rogueKnight.rogueKnightMoveForward()
+    this.rogueKnight.rogueKnightMoveLeft()
+    this.rogueKnight.rogueKnightMoveRight()
+
+    this.rogueKnightEnemyCollision()
 
     this.automaticAddPipes()
     this.automaticAddEnemysLeft()

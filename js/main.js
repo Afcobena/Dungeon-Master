@@ -37,14 +37,32 @@ restartBtn.addEventListener("click", startGame)
 
 // addeventlistener para manejar al Champion.
 /* window.addEventListener("keydown", (event) => {
-  game.rogueKnight.allMovesKeyDown()
+  if (event.code === "ArrowLeft") {
 
-})
+    game.rogueKnight.allMovesKeyDown();
+  } 
+  if (event.code === "ArrowRight") {
+    // aqui muevo al Champion a la derecha
+    game.rogueKnight.rogueKnightMoveRight();
+
+  } 
+  if (event.code === "ArrowUp") {
+    // aqui muevo al Champion a la derecha
+    game.rogueKnight.rogueKnightMoveForward(); 
+
+  } 
+  if (event.code === "ArrowDown") {
+    // aqui muevo al Champion a la derecha
+    game.rogueKnight.rogueKnightMoveDown(); 
+  }
 
 
-window.addEventListener("keyup", (event) => {
-  game.rogueKnight.allMovesKeyUp()
 }) */
+
+
+/* window.addEventListener("keyup", (event) => {
+  game.rogueKnight.allMovesKeyUp()
+}) */ 
 
 /* window.addEventListener("keydown", (event) => {
   switch (event.code) {
@@ -74,8 +92,53 @@ window.addEventListener("keyup", (event) => {
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
+    game.rogueKnight.teclasPress.ArrowLeft = true;
+    //modeficar los buleanos a verdadero
+  } 
+  if (event.code === "KeyD" || event.code === "ArrowRight") {
+    game.rogueKnight.teclasPress.ArrowRight = true;
+
+  } 
+  if (event.code === "KeyW" || event.code === "ArrowUp") {
+    game.rogueKnight.teclasPress.ArrowUp = true; 
+
+  } 
+  if (event.code === "KeyS" || event.code === "ArrowDown") {
+    game.rogueKnight.teclasPress.ArrowDown = true; 
+  }
+
+
+})
+
+//cambiar el keyup a falso
+
+
+window.addEventListener("keyup", (event) => {
+  if (event.code === "KeyA" || event.code === "ArrowLeft") {
+    game.rogueKnight.teclasPress.ArrowLeft = false;
+    //modeficar los buleanos a verdadero
+  } 
+  if (event.code === "KeyD" || event.code === "ArrowRight") {
+    game.rogueKnight.teclasPress.ArrowRight = false;
+
+  } 
+  if (event.code === "KeyW" || event.code === "ArrowUp") {
+    game.rogueKnight.teclasPress.ArrowUp = false; 
+
+  } 
+  if (event.code === "KeyS" || event.code === "ArrowDown") {
+    game.rogueKnight.teclasPress.ArrowDown = false; 
+  }
+
+
+})
+
+
+/* window.addEventListener("keydown", (event) => {
+  if (event.code === "KeyA" || event.code === "ArrowLeft") {
     // aqui muevo al Champion a la izquierda
-    game.rogueKnight.allMovesKeyDown();
+    game.rogueKnight.rogueKnightMoveLeft();
+    //modeficar los buleanos a verdadero
   } 
   if (event.code === "KeyD" || event.code === "ArrowRight") {
     // aqui muevo al Champion a la derecha
@@ -91,10 +154,9 @@ window.addEventListener("keydown", (event) => {
     // aqui muevo al Champion a la derecha
     game.rogueKnight.rogueKnightMoveDown(); 
   }
-  
 
-})
 
+}) */
 
 
 

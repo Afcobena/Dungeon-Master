@@ -7,7 +7,7 @@ class ZombieUp {
     this.y = 0;
     this.w = 70;
     this.h = 100/* canvas.height * 0.7 */;
-    this.speed = 3;
+    this.speed = 4;
   }
 
   // aqui todos los metodos de los tubos
