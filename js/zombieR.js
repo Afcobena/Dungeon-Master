@@ -1,4 +1,4 @@
-class Pipe {
+class ZombieRight {
   constructor(yParam, srcParam) {
     // aqui todas las propiedades de los tubos
     this.image = new Image();
@@ -11,11 +11,11 @@ class Pipe {
   }
 
   // aqui todos los metodos de los tubos
-  drawPipe = () => {
+  drawZombieRight = () => {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
   };
 
-  pipeMovement = () => {
+  moveZombieRight = () => {
     this.x -= this.speed
   };
 }

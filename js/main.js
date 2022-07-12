@@ -12,7 +12,7 @@ const gameOverScreenDOM = document.querySelector("#gameover-screen")
 const restartBtn = document.querySelector("#restart-btn")
 
 // variables globales del juego
-let game; // creo el juego de manera global para que todo mi codigo lo pueda acceder
+let game; 
 
 // * STATE MANAGEMENT FUNCTIONS
 
@@ -24,7 +24,7 @@ const startGame = () => {
   restartBtn.style.display = "none";
   canvas.style.display = "block";
 
-  // ... aqui es donde deberia iniciar el juego.
+  
   game = new Game()
   console.log(game)
   game.gameLoop()

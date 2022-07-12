@@ -8,7 +8,7 @@ class Game {
     this.dungeon = new Image();
     this.dungeon.src = "./src/images/BG2 pixel art.png";
     this.rogueKnight = new RogueKnight()
-    this.pipeArr = []
+    this.zombieRightArr = []
     this.zombieLeftArr = []
     this.zombieDownArr = []
     this.zombieUpArr = []
@@ -23,20 +23,20 @@ class Game {
   // .todos los metodos del juego (ej: las funciones que teniamos ayer en el pong)
 
   // los tubos aleatorios (cuando apareceran ) Spawn
-  automaticAddPipes = () => {
-      if (this.pipeArr.length === 0 || this.pipeArr[this.pipeArr.length - 1].x < canvas.height / 4) {
+  automaticAddEnemiesRight = () => {
+      if (this.zombieRightArr.length === 0 || this.zombieRightArr[this.zombieRightArr.length - 1].x < canvas.height / 4) {
           // 1. si el array está vacio
           // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
     
-          let randomPositionYUp = Math.random() * (canvas.height + 150 && canvas.height - 150)
+          let randomPositionY = Math.random() * (canvas.height + 150 && canvas.height - 150)
     
-          let newPipeUp = new Pipe(randomPositionYUp, "./src/images/zombie-from-right.png")
-          this.pipeArr.push(newPipeUp)
+          let newZombie = new ZombieRight(randomPositionY, "./src/images/zombie-from-right.png")
+          this.zombieRightArr.push(newZombie)
 
     }
   }
 
-  automaticAddEnemysLeft = () => {
+  automaticAddEnemiesLeft = () => {
     if (this.zombieLeftArr.length === 0 || this.zombieLeftArr[this.zombieLeftArr.length - 1].x > 600 / 2) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
@@ -49,7 +49,7 @@ class Game {
   }
 }
 
-  automaticAddEnemysDown = () => {
+  automaticAddEnemiesDown = () => {
     if (this.zombieDownArr.length === 0 || this.zombieDownArr[this.zombieDownArr.length - 1].y < canvas.height / 4) {
         // 1. si el array está vacio
         // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
@@ -62,7 +62,7 @@ class Game {
   }
 }
 
-  automaticAddEnemysUp = () => {
+  automaticAddEnemiesUp = () => {
     if (this.zombieUpArr.length === 0 || this.zombieUpArr[this.zombieUpArr.length - 1].y > 600 / 2) {
       // 1. si el array está vacio
       // 2. si el ULTIMO elemento del array, ha pasado la mitad del canvas
@@ -75,6 +75,8 @@ class Game {
   }
 }
 
+
+
   gameOver = () => {
       this.isGameOn = false;
       canvas.style.display = "none"
@@ -82,11 +84,11 @@ class Game {
   }
 
   rogueKnightEnemyCollision = () => {
-      this.pipeArr.forEach((eachPipe) => {
-          if (eachPipe.x < this.rogueKnight.x + this.rogueKnight.w &&
-              eachPipe.x + eachPipe.w > this.rogueKnight.x &&
-              eachPipe.y < this.rogueKnight.y + this.rogueKnight.h &&
-              eachPipe.h + eachPipe.y > this.rogueKnight.y) {
+      this.zombieRightArr.forEach((eachZombie) => {
+          if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+              eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+              eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+              eachZombie.h + eachZombie.y > this.rogueKnight.y) {
                   console.log("Braaaiiiinsss")
                   this.gameOver()
               }
@@ -192,13 +194,13 @@ class Game {
 
     this.rogueKnightEnemyCollision()
 
-    this.automaticAddPipes()
-    this.automaticAddEnemysLeft()
-    this.automaticAddEnemysDown()
-    this.automaticAddEnemysUp()
+    this.automaticAddEnemiesRight()
+    this.automaticAddEnemiesLeft()
+    this.automaticAddEnemiesDown()
+    this.automaticAddEnemiesUp()
 
-    this.pipeArr.forEach((eachPipe) => {
-      eachPipe.pipeMovement()
+    this.zombieRightArr.forEach((eachZombie) => {
+      eachZombie.moveZombieRight()
     })
 
     this.zombieLeftArr.forEach((eachZombie) => {
@@ -220,8 +222,8 @@ class Game {
     this.rogueKnight.drawRogueKnight();
     /* this.spear.drawSpear(); */
 
-    this.pipeArr.forEach((eachPipe) => {
-      eachPipe.drawPipe()
+    this.zombieRightArr.forEach((eachZombie) => {
+      eachZombie.drawZombieRight()
     })
 
     this.zombieLeftArr.forEach((eachZombie) => {
