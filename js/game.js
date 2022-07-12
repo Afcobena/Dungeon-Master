@@ -12,6 +12,7 @@ class Game {
     this.zombieLeftArr = []
     this.zombieDownArr = []
     this.zombieUpArr = []
+    this.spear = []
     
 
 
@@ -128,6 +129,54 @@ class Game {
 
   }
 
+  /* enemySpearCollision = () => {
+    this.pipeArr.forEach((eachPipe) => {
+          if (eachPipe.x < this.rogueKnight.x + this.rogueKnight.w &&
+              eachPipe.x + eachPipe.w > this.rogueKnight.x &&
+              eachPipe.y < this.rogueKnight.y + this.rogueKnight.h &&
+              eachPipe.h + eachPipe.y > this.rogueKnight.y) {
+                  console.log("Braaaiiiinsss")
+                  this.gameOver()
+              }
+
+      })
+
+      this.zombieLeftArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+      this.zombieDownArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+      this.zombieUpArr.forEach((eachZombie) => {
+        if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
+            eachZombie.x + eachZombie.w > this.rogueKnight.x &&
+            eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
+            eachZombie.h + eachZombie.y > this.rogueKnight.y) {
+                console.log("Braaaiiiinsss")
+                this.gameOver()
+            }
+
+      })
+
+
+  }
+ */
 
   gameLoop = () => {
     // console.log("juego andando");
@@ -169,6 +218,7 @@ class Game {
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
 
     this.rogueKnight.drawRogueKnight();
+    /* this.spear.drawSpear(); */
 
     this.pipeArr.forEach((eachPipe) => {
       eachPipe.drawPipe()
@@ -185,6 +235,8 @@ class Game {
     this.zombieUpArr.forEach((eachZombie) => {
       eachZombie.drawZombieUp()
     })
+
+    
 
     // 4. Efecto de recursión
     if (this.isGameOn === true) {

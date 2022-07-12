@@ -23,11 +23,12 @@ class RogueKnight {
     this.downRightArr = [];
     this.downArr = [];
     this.downLeftArr = [];
-    this.leftArr = [];
+    this.leftArr = ["./src/images/Left-1.png", "./src/images/Left-2.png", "./src/images/Left-3.png", "./src/images/Left-4.png"];
     this.upLeftArr = [];
     this.arrIndex = 0;
 
 
+    //vel x vel y de los enemygos arcotangente de ambal delta del jugador, y a X ceno de arco tangente e Y coseno de arco tangente
 
     // crear 8 array y una propiedad para cada uno con el indice de la imagen actual
     // crear condicionales en el que me muestre en cada condicional una imagen o la siguiente
@@ -55,6 +56,7 @@ class RogueKnight {
   rogueKnightMoveForward = () => {
     if (this.teclasPress.ArrowUp === true) {
       this.y -= this.speedY
+      
     }
 
   }
@@ -62,6 +64,7 @@ class RogueKnight {
   rogueKnightMoveLeft = () => {
     if (this.teclasPress.ArrowLeft === true) {
       this.x -= this.speedX
+      /* this.updateImage()  */
     }
 
   }
@@ -72,14 +75,14 @@ class RogueKnight {
     }
 
   }
+  // hacer un for each para que itere por cada uno da de las fotos
 
   // tengo que crear una function update image con 8 condicionales y que vayan recoriendo todos los lados
 
   updateImage = () => {
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-        this.upArr = this.arrIndex
-      }
-
+      
+    }
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
         this.upRightArr = this.arrIndex
       }
@@ -101,7 +104,9 @@ class RogueKnight {
       }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
-        this.leftArr = this.arrIndex
+        /* this.image.src = this.leftArr.forEach((eachImg) => {
+          eachImg.updateImage()
+        }) */
       }
 
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
