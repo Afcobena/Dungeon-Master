@@ -17,13 +17,13 @@ class RogueKnight {
       
     }
 
-    this.upArr = [];
+    this.upArr = ["./src/images/upKnigth/Up-1.png", "./src/images/upKnigth/Up-2.png", "./src/images/upKnigth/Up-3.png", "./src/images/upKnigth/Up-4.png", "./src/images/upKnigth/Up-5.png", "./src/images/upKnigth/Up-6.png"];
     this.upRightArr = [];
-    this.rightArr = [];
+    this.rightArr = ["./src/images/rightKnight/Right-1.png", "./src/images/rightKnight/Right-2.png", "./src/images/rightKnight/Right-3.png", "./src/images/rightKnight/Right-4.png", "./src/images/rightKnight/Right-5.png", "./src/images/rightKnight/Right-6.png"];
     this.downRightArr = [];
-    this.downArr = [];
+    this.downArr = ["./src/images/downKnight/Down-1.png", "./src/images/downKnight/Down-2.png", "./src/images/downKnight/Down-3.png", "./src/images/downKnight/Down-4.png", "./src/images/downKnight/Down-5.png", "./src/images/downKnight/Down-6.png"];
     this.downLeftArr = [];
-    this.leftArr = ["./src/images/Left-1.png", "./src/images/Left-2.png", "./src/images/Left-3.png", "./src/images/Left-4.png"];
+    this.leftArr = ["./src/images/leftKnight/Left-1.png", "./src/images/leftKnight/Left-2.png", "./src/images/leftKnight/Left-3.png", "./src/images/leftKnight/Left-4.png", "./src/images/leftKnight/Left-5.png", "./src/images/leftKnight/Left-6.png"];
     this.upLeftArr = [];
     this.arrIndex = 0;
 
@@ -49,6 +49,7 @@ class RogueKnight {
   rogueKnightMoveDown = () => {
     if (this.teclasPress.ArrowDown === true) {
       this.y += this.speedY
+      this.image.src = "./src/images/downKnight/Down-1.png"
     }
     
   }
@@ -56,7 +57,7 @@ class RogueKnight {
   rogueKnightMoveForward = () => {
     if (this.teclasPress.ArrowUp === true) {
       this.y -= this.speedY
-      
+      this.image.src = "./src/images/upKnigth/Up-1.png"
     }
 
   }
@@ -64,7 +65,7 @@ class RogueKnight {
   rogueKnightMoveLeft = () => {
     if (this.teclasPress.ArrowLeft === true) {
       this.x -= this.speedX
-      /* this.updateImage()  */
+      this.image.src = "./src/images/leftKnight/Left-1.png"
     }
 
   }
@@ -72,6 +73,8 @@ class RogueKnight {
   rogueKnightMoveRight = () => {
     if (this.teclasPress.ArrowRight === true) {
       this.x += this.speedX
+      this.image.src = "./src/images/rightKnight/Right-1.png"
+
     }
 
   }
@@ -79,34 +82,42 @@ class RogueKnight {
 
   // tengo que crear una function update image con 8 condicionales y que vayan recoriendo todos los lados
 
+  // hacer un bucle que entre en el indice del array y me devuelva el la siguiente imagen
+
   updateImage = () => {
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-      
+        this.image.src = this.upArr.forEach((eachImg) => {
+        eachImg.updateImage()
+      })
     }
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
         this.upRightArr = this.arrIndex
       }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-        this.rightArr = this.arrIndex
-      }
+        this.image.src = this.rightArr.forEach((eachImg) => {
+        eachImg.updateImage()
+      })
+    }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === false) {
         this.downRightArr= this.arrIndex
       }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === false) {
-        this.downArr= this.arrIndex
-      }
+      this.image.src = this.downArr.forEach((eachImg) => {
+        eachImg.updateImage()
+      })
+    }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === true) {
         this.downLeftArr = this.arrIndex
       }
 
     if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
-        /* this.image.src = this.leftArr.forEach((eachImg) => {
+        this.image.src = this.leftArr.forEach((eachImg) => {
           eachImg.updateImage()
-        }) */
+        })
       }
 
     if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
@@ -116,20 +127,3 @@ class RogueKnight {
   }
       
 } 
-
-
-
-
-
-
-
-
-// uppdate image ea funcion verifica los mismos condicionales cual e sla imagen que va a colocar
-
-
-/* 
-    this.image.src = "./src/images/zombie-from-right.png"
-*/
-
-
-

@@ -80,8 +80,6 @@ window.addEventListener("keyup", (event) => {
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "KeyZ") {
-    // aqui muevo al Champion a la izquierda
-    game.spear.spearMovement();
-    //modeficar los buleanos a verdadero
+    game.throwSpear();
   }
 })

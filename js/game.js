@@ -12,7 +12,7 @@ class Game {
     this.zombieLeftArr = []
     this.zombieDownArr = []
     this.zombieUpArr = []
-    this.spear = []
+    this.spearArr = []
     
 
 
@@ -23,6 +23,8 @@ class Game {
   // .todos los metodos del juego (ej: las funciones que teniamos ayer en el pong)
 
   // los tubos aleatorios (cuando apareceran ) Spawn
+
+
   automaticAddEnemiesRight = () => {
       if (this.zombieRightArr.length === 0 || this.zombieRightArr[this.zombieRightArr.length - 1].x < canvas.height / 4) {
           // 1. si el array está vacio
@@ -76,6 +78,16 @@ class Game {
 }
 
 
+//crear disparo condicional para cree uno nuevo en el main con addevent
+
+  throwSpear = () => {
+    if (this.spearArr.length === 0 || this.spearArr.length++) {
+      
+      let newSpear = new Spear("./src/images/spear-image.png")
+      this.spearArr.push(newSpear)
+
+  }
+  }
 
   gameOver = () => {
       this.isGameOn = false;
@@ -131,17 +143,22 @@ class Game {
 
   }
 
-/*   enemiesSpearCollision = () => {
+  enemiesSpearCollision = () => {
     this.spearArr.forEach((eachSpear) => {
       if (eachSpear.x < this.zombieUp.x + this.zombieUp.w &&
           eachSpear.x + eachSpear.w > this.zombieUp.x &&
           eachSpear.y < this.zombieUp.y + this.zombieUp.h &&
           eachSpear.h + eachSpear.y > this.zombieUp.y) {
             this.zombieUpArr.forEach((eachZombie) => {
-              eachZombie.moveZombieUp()
+              this.spearArr.forEach((eachSpear) => {
+                if (eachZombie.active === true && eachSpear.active === true) {
+                  eachZombie.active === false;
+                  eachSpear.active === false;
+                }
+
+              })
             })
           }
-
     })
     
     
@@ -180,7 +197,7 @@ class Game {
     })
 
 
-} */
+}
   gameLoop = () => {
     // console.log("juego andando");
     // 1. Limpiamos el canvas
@@ -200,9 +217,11 @@ class Game {
     this.automaticAddEnemiesDown()
     this.automaticAddEnemiesUp()
 
-/*     this.spearArr.forEach((eachSpear) => {
-      eachSpear.spearMovement()
-    }) */
+/*     this.spear.throwSpear() */
+
+    this.spearArr.forEach((eachSpear) => {
+      eachSpear.spearMove()
+    })
 
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.moveZombieRight()
@@ -226,9 +245,9 @@ class Game {
 
     this.rogueKnight.drawRogueKnight();
     
-/*     this.spearArr.forEach((eachSpear) => {
+    this.spearArr.forEach((eachSpear) => {
       eachSpear.drawSpear()
-    }) */
+    })
 
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.drawZombieRight()
