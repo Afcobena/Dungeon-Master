@@ -18,6 +18,14 @@ const healthBarDOM = document.querySelectorAll(".bar")
 // variables globales del juego
 let game; 
 
+//gameMusic
+
+const gameAudio = new Audio("./src/audio/jeremy-soule-dragonbornNEW.mp3")
+gameAudio.volume = 0.2;
+gameAudio.preload = "auto"
+gameAudio.load()
+
+
 // * STATE MANAGEMENT FUNCTIONS
 
 const startGame = () => {
@@ -29,6 +37,9 @@ const startGame = () => {
   restartBtn.style.display = "flex";
   canvas.style.display = "block";
   healthBarDOM.innerHTML = 3;
+
+  gameAudio.load()
+  gameAudio.play()
 
 
   

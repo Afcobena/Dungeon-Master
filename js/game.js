@@ -16,10 +16,7 @@ class Game {
     this.frameCounter = 0;
     this.score = 0;
     this.audio = new Audio("./src/audio/jeremy-soule-dragonborn.mp3")
- /*    this.healthBar = new HealthBar();
-    this.health = 100;
-    this.healthBarWidth = 200;
-    this.healthBarHeight = 30; */
+
 
 
 
@@ -164,6 +161,7 @@ class Game {
       this.isGameOn = false;
       canvas.style.display = "none"
       gameOverScreenDOM.style.display = "flex"
+      gameAudio.pause()
   }
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
   rogueKnightWallCollision = () => {
@@ -253,6 +251,7 @@ class Game {
           eachSpear.h + eachSpear.y > eachZombie.y) {
             this.spearArr.splice(index, 1)
             this.zombieUpArr.splice(indexZ, 1)
+            this.gameOver()
 
 
 
