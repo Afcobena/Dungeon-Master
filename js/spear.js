@@ -1,5 +1,5 @@
 class Spear {
-  constructor(xParam, yParam, srcParam) {
+  constructor(xParam, yParam, srcParam, directionGoodParam) {
     this.image = new Image();
     this.image.src = srcParam;
     this.x = xParam;
@@ -8,6 +8,7 @@ class Spear {
     this.h = 17;
     this.velocity = 10;
     this.active = true;
+    this.directionGood = directionGoodParam;
     this.direction = {
       up: false,
       right: false,
@@ -15,7 +16,7 @@ class Spear {
       left: false,
     };
   }
-
+//
 
   /* 
 
@@ -53,26 +54,28 @@ class Spear {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
   };
 
-  /* spearMove = () => {
-        if (this.direction.right) {
-            this.x += this.velocity;
-        }               
-           /*  if (this.direction.left) {
-                this.x -= this.velocity;
-            }               
-            if (this.direction.down) {
-                this.y += this.velocity;
-            }       
-            if (this.direction.up) {
-                this.y -= this.velocity;
-            }
-
-            if (this.x > canvas.width) this.active = false;
-            if (this.x + this.w < 0) this.active = false;
-            
-        } */
+//
 
   spearMove = () => {
+    if (this.direction.right) {
+            this.x += this.velocity;
+    }               
+    if (this.direction.left) {
+                this.x -= this.velocity;
+    }               
+    if (this.direction.down) {
+                this.y += this.velocity;
+    }       
+    if (this.direction.up) {
+                this.y -= this.velocity;
+    }
+
+    if (this.x > canvas.width) this.active = false;
+    if (this.x + this.w < 0) this.active = false;
+            //al salir que haga shift
+    }
+
+/*   spearMove = () => {
     if (this.direction.down === true) {
         this.y += this.speedY;
         this.image.src = "./src/images/spear/spear-image-down.png";
@@ -93,7 +96,7 @@ class Spear {
         this.image.src = "./src/images/spear/spear-image-right.png";
     }
 
-  }
+  } */
 
 
 

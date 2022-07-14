@@ -9,7 +9,7 @@ class RogueKnight {
     this.h = 100;
     this.speedX = 10;
     this.speedY = 10;
-    
+    this.lifes = 3;
     this.teclasPress = {
       ArrowLeft: false,
       ArrowRight: false,

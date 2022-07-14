@@ -16,11 +16,12 @@ class Game {
     this.frameCounter = 0;
     this.score = 0;
     this.audio = new Audio("./src/audio/jeremy-soule-dragonborn.mp3")
-    this.playGameMusic = 
+ /*    this.healthBar = new HealthBar();
+    this.health = 100;
+    this.healthBarWidth = 200;
+    this.healthBarHeight = 30; */
 
-  //lo inicio en el constructor y lo meto en el loop
 
-  //la funcion de pausa va en el game over audio .pause
 
     
     
@@ -29,6 +30,10 @@ class Game {
     this.isGameOn = true;
 
   }
+
+/*   health = () => {
+
+  } */
 
   /* function this.audio con el play, volumen{
     
@@ -70,6 +75,8 @@ class Game {
     
           let newZombie = new ZombieRight(randomPositionY, "./src/images/zombie-from-right.png")
           this.zombieRightArr.push(newZombie)
+
+         
 
     }
   }
@@ -126,7 +133,7 @@ class Game {
 /* this.NamedNodeMap. 1/60 */
 
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
-  enemyFollow = () => {
+/*   enemyFollow = () => {
     this.zombieLeftArr.forEach((eachZombie) => {
       if(eachZombie.x > this.rogueKnight.x) {
         eachZombie.x = -1
@@ -134,10 +141,10 @@ class Game {
         eachZombie.x = +1
       }
     }) 
-  }
+  } */
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
   throwSpear = () => {
-    if (this.rogueKnightMoveDown === true) {
+    
 
       //como haria para que la x y la x fueran del personaje
       let positionX = this.rogueKnight.x
@@ -145,9 +152,12 @@ class Game {
 
       
       let newSpear = new Spear(positionX, positionY, "./src/images/spear/spear-image-left.png")
+      //condicional y la direccion del spear tiene que estar en game y pasar a la clase
+      // a donde esta viendo el usario
       this.spearArr.push(newSpear)
+      // crear un nuevo elemento y meterlo en el array
 
-  }
+  
   }
 
   gameOver = () => {
@@ -178,14 +188,22 @@ class Game {
 
 
   rogueKnightEnemyCollision = () => {
-      this.zombieRightArr.forEach((eachZombie) => {
+      this.zombieRightArr.forEach((eachZombie, index) => {
           if (eachZombie.x < this.rogueKnight.x + this.rogueKnight.w &&
               eachZombie.x + eachZombie.w > this.rogueKnight.x &&
               eachZombie.y < this.rogueKnight.y + this.rogueKnight.h &&
               eachZombie.h + eachZombie.y > this.rogueKnight.y) {
                   console.log("Braaaiiiinsss")
-                  this.gameOver()
+                  
               }
+              /* if (this.rogueKnight.lifes > 0) {
+                this.rogueKnight.lifes = this.rogueKnight.lifes -1
+                healthBarDOM.innerHTML = Number(healthBarDOM.innerHTML) -1
+              } else if(this.rogueKnight.lifes === 0) {
+                this.gameOver()
+              }
+              this.zombieRightArr.splice(index,1) */
+            
 
       })
 
@@ -226,26 +244,44 @@ class Game {
   }
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
   enemiesSpearCollision = () => {
-    this.spearArr.forEach((eachSpear) => {
+    this.spearArr.forEach((eachSpear, index) => {
+      this.zombieUpArr.forEach((eachZombie, indexZ) => {
+
+        if (eachSpear.x < eachZombie.x + eachZombie.w &&
+          eachSpear.x + eachSpear.w > eachZombie.x &&
+          eachSpear.y < eachZombie.y + eachZombie.h &&
+          eachSpear.h + eachSpear.y > eachZombie.y) {
+            this.spearArr.splice(index, 1)
+            this.zombieUpArr.splice(indexZ, 1)
+
+
+
+          }
+
+
+      }
+      
+      )
+
+
+    })
+
+    
+
+    /* this.spearArr.forEach((eachSpear) => {
       if (eachSpear.x < this.zombieUp.x + this.zombieUp.w &&
           eachSpear.x + eachSpear.w > this.zombieUp.x &&
           eachSpear.y < this.zombieUp.y + this.zombieUp.h &&
           eachSpear.h + eachSpear.y > this.zombieUp.y) {
-            this.zombieUpArr.forEach((eachZombie) => {
-              this.spearArr.forEach((eachSpear) => {
-                if (eachZombie.active === true && eachSpear.active === true) {
-                  eachZombie.active === false;
-                  eachSpear.active === false;
-                }
 
-              })
-            })
           }
-    })
+    }) */
+
+
     
     
 
-    this.spearArr.forEach((eachSpear) => {
+    /* this.spearArr.forEach((eachSpear) => {
       if (eachSpear.x < this.zombieRight.x + this.zombieRight.w &&
           eachSpear.x + eachSpear.w > this.zombieRight.x &&
           eachSpear.y < this.zombieRight.y + this.zombieRight.h &&
@@ -276,7 +312,30 @@ class Game {
               this.gameOver()
           }
 
-    })
+    }) */
+
+
+
+/*     enemiesSpearCollision = () => {
+      this.spearArr.forEach((eachSpear, index) => {
+        this.zombieUpArr.forEach((eachZombie, indexZ) => {
+  
+          if (eachSpear.x < eachZombie.x + eachZombie.w &&
+            eachSpear.x + eachSpear.w > eachZombie.x &&
+            eachSpear.y < eachZombie.y + eachZombie.h &&
+            eachSpear.h + eachSpear.y > eachZombie.y) {
+              this.spearArr.splice(index, 1)
+              this.zombieUpArr.splice(indexZ, 1)
+  
+  
+  
+            }
+  
+  
+        })
+  
+  
+      }) */
 
 
 }
@@ -303,6 +362,7 @@ class Game {
     this.rogueKnight.rogueKnightMoveRight()
     this.rogueKnightEnemyCollision()
     this.rogueKnightWallCollision()
+    this.enemiesSpearCollision()
     
     /* this.enemyFollow() */
     this.automaticAddEnemiesRight()
@@ -332,7 +392,11 @@ class Game {
       eachZombie.moveZombieUp()
     })
 
+
     // 3. Dibujar los elementos
+
+
+    
 
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
 
@@ -357,6 +421,8 @@ class Game {
     this.zombieUpArr.forEach((eachZombie) => {
       eachZombie.drawZombieUp()
     })
+
+    /* this.healthBar.show() */
 
     
 

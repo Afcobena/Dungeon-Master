@@ -12,7 +12,8 @@ const gameOverScreenDOM = document.querySelector("#gameover-screen")
 const restartBtn = document.querySelector("#restart-btn")
 const scoreUpdateDOM = document.querySelector(".score-value")
 const pauseBtn = document.querySelectorAll("#pause-btn")
-const lifeBarDOM = document.querySelectorAll(".life-bar")
+const healthBarDOM = document.querySelectorAll(".bar")
+
 
 // variables globales del juego
 let game; 
@@ -27,6 +28,7 @@ const startGame = () => {
 
   restartBtn.style.display = "flex";
   canvas.style.display = "block";
+  healthBarDOM.innerHTML = 3;
 
 
   
