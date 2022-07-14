@@ -8,18 +8,6 @@ class HealthBar {
         this.maxWidth = this.w;
         this.health = maxHealthParam;
         this.color = "green";
-        
-
-
-
-
-
-
-
-
-
-
-
     }
 
     show = () => {
@@ -34,35 +22,4 @@ class HealthBar {
         this.health = val;
         this.w = (this.health / this.maxHealth) * this.maxWidth; 
     }
-
-
-
-/*     constructor(xParam, yParam, wParam, hParam, maxHealthParam, colorParam) {
-        this.x = xParam;
-        this.y = yParam;
-        this.w = wParam;
-        this.h = hParam;
-        this.maxHealth = maxHealthParam;
-        this.maxWidth = wParam;
-        this.health = maxHealthParam;
-        this.color = colorParam;
-
-
-
-
-
-
-
-
-
-
-
-    } */
-
-
-
-
-
-
-
 }
