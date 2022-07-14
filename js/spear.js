@@ -1,11 +1,11 @@
 class Spear {
-  constructor(srcParam) {
+  constructor(xParam, yParam, srcParam) {
     this.image = new Image();
     this.image.src = srcParam;
-    this.x = 0;
-    this.y = 0;
-    this.w = this.image.width;
-    this.h = this.image.height;
+    this.x = xParam;
+    this.y = yParam;
+    this.w = 70;
+    this.h = 17;
     this.velocity = 10;
     this.active = true;
     this.direction = {
@@ -16,8 +16,8 @@ class Spear {
     };
   }
 
-  
-/*     spearMovement = () => {
+
+  /* 
 
         spearMoveRight = () => {
             if (this.direction.right) {
@@ -49,23 +49,15 @@ class Spear {
 
     } */
 
-    drawSpear = () => {
-        ctx.drawImage(
-          this.image,
-          this.x,
-          this.y,
-          this.image.width,
-          this.image.height
-        );
-      
-    };
+  drawSpear = () => {
+    ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+  };
 
-
-        spearMove = () => {
-            if (this.direction.right) {
-                this.x += this.velocity;
-            }               
-            if (this.direction.left) {
+  /* spearMove = () => {
+        if (this.direction.right) {
+            this.x += this.velocity;
+        }               
+           /*  if (this.direction.left) {
                 this.x -= this.velocity;
             }               
             if (this.direction.down) {
@@ -78,11 +70,76 @@ class Spear {
             if (this.x > canvas.width) this.active = false;
             if (this.x + this.w < 0) this.active = false;
             
-        }
+        } */
+
+  spearMove = () => {
+    if (this.direction.down === true) {
+        this.y += this.speedY;
+        this.image.src = "./src/images/spear/spear-image-down.png";
+    }
+
+    else if (this.direction.up === true) {
+        this.y -= this.speedY;
+        this.image.src = "./src/images/spear/spear-image-up.png";
+    }
+
+    else if (this.direction.left === true) {
+        this.x -= this.speedX;
+        this.image.src = "./src/images/spear/spear-image-left.png";
+    }
+
+    else if (this.direction.right === true) {
+        this.x += this.speedX;
+        this.image.src = "./src/images/spear/spear-image-right.png";
+    }
+
+  }
 
 
-    
 
+/*   spearMove = () => {
+    if (this.direction.down === this.teclasPress.ArrowDown) {
+        this.y += this.speedY;
+        this.image.src = "./src/images/spear/spear-image-down.png";
+    }
+
+    if (this.direction.up === this.teclasPress.ArrowUp) {
+        this.y -= this.speedY;
+        this.image.src = "./src/images/spear/spear-image-up.png";
+    }
+
+    if (this.direction.left === this.teclasPress.ArrowLeft) {
+        this.x -= this.speedX;
+        this.image.src = "./src/images/spear/spear-image-left.png";
+    }
+
+    if (this.direction.right === this.teclasPress.ArrowRight) {
+        this.x += this.speedX;
+        this.image.src = "./src/images/spear/spear-image-right.png";
+    }
+
+  } */
+
+  /* spearMove = () => {
+        if (this.direction.right) {
+            this.x += this.velocity;
+        }   */
+  /*  if (this.direction.left) {
+                this.x -= this.velocity;
+            }               
+            if (this.direction.down) {
+                this.y += this.velocity;
+            }       
+            if (this.direction.up) {
+                this.y -= this.velocity;
+            }
+
+            if (this.x > canvas.width) this.active = false;
+            if (this.x + this.w < 0) this.active = false;
+            
+        } */
+
+  /* } */
 }
 
 // crear un array y que hagan mutuamente POP

@@ -1,14 +1,15 @@
 class RogueKnight {
   constructor() {
-    // aqui todas las propiedades del pollito
+ 
     this.image = new Image()
     this.image.src = "./src/images/rogue-knight-sprite.png"
-    this.x = 390; // posición eje X
-    this.y = 550; // posición eje Y
-    this.w = 40; // width: ancho
-    this.h = 100; // height: alto
+    this.x = 390;
+    this.y = 550;
+    this.w = 40; 
+    this.h = 100;
     this.speedX = 10;
     this.speedY = 10;
+    
     this.teclasPress = {
       ArrowLeft: false,
       ArrowRight: false,
@@ -16,6 +17,8 @@ class RogueKnight {
       ArrowDown: false
       
     }
+
+    
 
     this.upArr = ["./src/images/upKnigth/Up-1.png", "./src/images/upKnigth/Up-2.png", "./src/images/upKnigth/Up-3.png", "./src/images/upKnigth/Up-4.png", "./src/images/upKnigth/Up-5.png", "./src/images/upKnigth/Up-6.png"];
     this.upRightArr = [];
@@ -30,19 +33,12 @@ class RogueKnight {
 
     //vel x vel y de los enemygos arcotangente de ambal delta del jugador, y a X ceno de arco tangente e Y coseno de arco tangente
 
-    // crear 8 array y una propiedad para cada uno con el indice de la imagen actual
-    // crear condicionales en el que me muestre en cada condicional una imagen o la siguiente
-
+    
   }
-
-  // aqui todos los metodos del pollito
 
   drawRogueKnight = () => {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
   }
-
-
-
 
   //-------------------------------------MOVIMIENTO EN LOS 8 EJES----------------------------------
 

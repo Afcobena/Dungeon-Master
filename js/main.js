@@ -10,6 +10,9 @@ const splashScreenDOM = document.querySelector("#splash-screen");
 const startBtn = document.querySelector("#start-btn");
 const gameOverScreenDOM = document.querySelector("#gameover-screen")
 const restartBtn = document.querySelector("#restart-btn")
+const scoreUpdateDOM = document.querySelector(".score-value")
+const pauseBtn = document.querySelectorAll("#pause-btn")
+const lifeBarDOM = document.querySelectorAll(".life-bar")
 
 // variables globales del juego
 let game; 
@@ -20,9 +23,11 @@ const startGame = () => {
   console.log("intentando inicar el juego");
   splashScreenDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
+  
 
-  restartBtn.style.display = "none";
+  restartBtn.style.display = "flex";
   canvas.style.display = "block";
+
 
   
   game = new Game()
@@ -30,10 +35,23 @@ const startGame = () => {
   game.gameLoop()
 };
 
+/* const pauseGame = () => {
+  if(game.isGamePaused === false) {
+    game.isGamePaused = true
+  }
+  else {
+    game.isGamePaused = false
+    game.gameLoop()
+  }
+} */
+
+
+
 // * ADD EVENT LISTENERS
 
 startBtn.addEventListener("click", startGame);
-restartBtn.addEventListener("click", startGame)
+restartBtn.addEventListener("click", startGame);
+/* pauseBtn.addEventListener("click", pauseGame); */
 
 
 
@@ -79,7 +97,7 @@ window.addEventListener("keyup", (event) => {
 
 
 window.addEventListener("keydown", (event) => {
-  if (event.code === "KeyZ") {
+  if (event.code === "KeyF") {
     game.throwSpear();
   }
 })

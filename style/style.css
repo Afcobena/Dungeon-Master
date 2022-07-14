@@ -11,13 +11,22 @@ body {
     background-color: darkgray;
   }
   
-  #start-btn, #restart-btn {
+  #start-btn {
     background-color: rgb(188, 94, 27);
     color: white;
     padding: 20px;
     font-size: 20px;
     margin-top: 40px;
     border-radius: 10px; 
+  }
+
+  #restart-btn {
+    background-color: blue;
+    color: white;
+    padding: 50px;
+    font-size: 50px;
+    margin-top: 50px;
+    border-radius: 20px; 
   }
   
   .container {

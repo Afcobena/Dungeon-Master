@@ -13,16 +13,52 @@ class Game {
     this.zombieDownArr = []
     this.zombieUpArr = []
     this.spearArr = []
+    this.frameCounter = 0;
+    this.score = 0;
+    this.audio = new Audio("./src/audio/jeremy-soule-dragonborn.mp3")
+    this.playGameMusic = 
+
+  //lo inicio en el constructor y lo meto en el loop
+
+  //la funcion de pausa va en el game over audio .pause
+
+    
     
 
 
     this.isGameOn = true;
-    // el score (BONUS)
+
   }
 
-  // .todos los metodos del juego (ej: las funciones que teniamos ayer en el pong)
+  /* function this.audio con el play, volumen{
+    
+  } */
 
-  // los tubos aleatorios (cuando apareceran ) Spawn
+  playMusic = () => {
+    this.audio.src = ("./src/audio/jeremy-soule-dragonborn.mp3")
+    this.audio.volume = 1
+
+  }
+
+
+
+
+  scoreUpdate = () => {
+    if(this.frameCounter % 60 === 0 && this.frameCounter !== 0) {
+      this.score += 1;
+
+      scoreUpdateDOM.innerText = this.score;
+    }
+    else if(this.frameCounter === 0) {
+      this.score = 0;
+      scoreUpdateDOM.innerText = this.score;
+    }      
+  }
+  
+  
+  
+
+  
 
 
   automaticAddEnemiesRight = () => {
@@ -47,6 +83,15 @@ class Game {
   
         let newZombieLeftUp = new ZombieLeft(randomPositionYUp, "./src/images/zombie-from-left.png")
         this.zombieLeftArr.push(newZombieLeftUp)
+
+        this.zombieLeftArr.forEach((eachZombie) => {
+          if(eachZombie.x > this.rogueKnight.x) {
+            eachZombie.directionX = -1
+          }
+          else if(eachZombie.x < this.rogueKnight.x) {
+            eachZombie.directionX = 1
+          }
+        })
 
   }
 }
@@ -77,13 +122,29 @@ class Game {
   }
 }
 
+//crear variable frame count = 0 farmecount ++ 
+/* this.NamedNodeMap. 1/60 */
 
-//crear disparo condicional para cree uno nuevo en el main con addevent
-
+//--------------------------------------------FUNCIÓN POR TERMINAR-------------------
+  enemyFollow = () => {
+    this.zombieLeftArr.forEach((eachZombie) => {
+      if(eachZombie.x > this.rogueKnight.x) {
+        eachZombie.x = -1
+      } else if(eachZombie.x < this.rogueKnight.x) {
+        eachZombie.x = +1
+      }
+    }) 
+  }
+//--------------------------------------------FUNCIÓN POR TERMINAR-------------------
   throwSpear = () => {
-    if (this.spearArr.length === 0 || this.spearArr.length++) {
+    if (this.rogueKnightMoveDown === true) {
+
+      //como haria para que la x y la x fueran del personaje
+      let positionX = this.rogueKnight.x
+      let positionY = this.rogueKnight.y
+
       
-      let newSpear = new Spear("./src/images/spear-image.png")
+      let newSpear = new Spear(positionX, positionY, "./src/images/spear/spear-image-left.png")
       this.spearArr.push(newSpear)
 
   }
@@ -94,6 +155,27 @@ class Game {
       canvas.style.display = "none"
       gameOverScreenDOM.style.display = "flex"
   }
+//--------------------------------------------FUNCIÓN POR TERMINAR-------------------
+  rogueKnightWallCollision = () => {
+    if(this.rogueKnight.x + this.rogueKnight.w > canvas.width) {
+      this.rogueKnight.x =canvas.width - this.rogueKnight.w
+      console.log("Right Wall")
+
+    }
+
+    else if (this.rogueKnight.y + this.rogueKnight.h > canvas.height) {
+      this.rogueKnight.y =canvas.height - this.rogueKnight.h
+      console.log("Down Wall")
+
+    }
+    else if (this.rogueKnight.x < 0) {
+      this.rogueKnight.x = 0
+    }
+    else if (this.rogueKnight.y < 0) {
+      this.rogueKnight.y = 0
+    }
+  }
+
 
   rogueKnightEnemyCollision = () => {
       this.zombieRightArr.forEach((eachZombie) => {
@@ -142,7 +224,7 @@ class Game {
 
 
   }
-
+//--------------------------------------------FUNCIÓN POR TERMINAR-------------------
   enemiesSpearCollision = () => {
     this.spearArr.forEach((eachSpear) => {
       if (eachSpear.x < this.zombieUp.x + this.zombieUp.w &&
@@ -198,26 +280,37 @@ class Game {
 
 
 }
+
+
+
+
   gameLoop = () => {
-    // console.log("juego andando");
-    // 1. Limpiamos el canvas
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
+    this.frameCounter++;
+    this.scoreUpdate()
+    this.playMusic()
+
     // 2. Movimientos y acciones de los elementos
+
+
     
     this.rogueKnight.rogueKnightMoveDown()
     this.rogueKnight.rogueKnightMoveForward()
     this.rogueKnight.rogueKnightMoveLeft()
     this.rogueKnight.rogueKnightMoveRight()
-
     this.rogueKnightEnemyCollision()
-
+    this.rogueKnightWallCollision()
+    
+    /* this.enemyFollow() */
     this.automaticAddEnemiesRight()
     this.automaticAddEnemiesLeft()
     this.automaticAddEnemiesDown()
     this.automaticAddEnemiesUp()
 
-/*     this.spear.throwSpear() */
+    /* this.spear.throwSpear() */
 
     this.spearArr.forEach((eachSpear) => {
       eachSpear.spearMove()
@@ -275,3 +368,31 @@ class Game {
 
   
 }
+
+
+
+/* rogueKnightWallCollision = () => {
+  if(this.rogueKnight.x + this.rogueKnight.w > canvas.width) {
+    this.rogueKnight.x =canvas.width - this.rogueKnight.w
+    console.log("Right Wall")
+
+  }
+  else if (this.rogueKnight.x - this.rogueKnight.w < 0) {
+    this.rogueKnight.x =canvas.width - this.rogueKnight.w
+    console.log("Leftt Wall")
+  }
+  else if (this.rogueKnight.y + this.rogueKnight.h > canvas.height) {
+    this.rogueKnight.y =canvas.height - this.rogueKnight.h
+    console.log("Down Wall")
+  }
+  else if (this.rogueKnight.y - this.rogueKnight.h < 0) {
+    this.rogueKnight.y =canvas.height - this.rogueKnight.h
+    console.log("Up Wall")
+  }
+  else if (this.rogueKnight.x < 0) {
+    this.rogueKnight.x = 0
+  }
+  else if (this.rogueKnight.y < 0) {
+    this.rogueKnight.y = 0
+  }
+} */
