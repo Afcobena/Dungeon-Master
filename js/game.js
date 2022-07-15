@@ -105,7 +105,9 @@ class Game {
       let newSpear = new Spear(positionX, positionY, "./src/images/bearTrap.png")
       //condicional y la direccion del spear tiene que estar en game y pasar a la clase
       // a donde esta viendo el usario
+      if (this.spearArr.length < 5) {
       this.spearArr.push(newSpear)
+      }
       // crear un nuevo elemento y meterlo en el array
   }
 

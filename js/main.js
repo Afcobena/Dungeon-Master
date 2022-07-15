@@ -20,12 +20,12 @@ let game;
 //gameMusic
 
 const gameAudio = new Audio("./src/audio/jeremy-soule-dragonbornNEW.mp3")
-gameAudio.volume = 0.5;
+gameAudio.volume = 0.1;
 gameAudio.preload = "auto"
 gameAudio.load()
 
 const trapAudio = new Audio("./src/audio/sword-start.mp3")
-trapAudio.volume = 0.5;
+trapAudio.volume = 0.1;
 trapAudio.preload = "auto";
 trapAudio.load()
 

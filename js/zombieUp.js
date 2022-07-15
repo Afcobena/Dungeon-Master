@@ -6,7 +6,7 @@ class ZombieUp {
     this.y = 0;
     this.w = 75;
     this.h = 85;
-    this.speed = 2;
+    this.speed = 4;
   }
 
   drawZombieUp = () => {

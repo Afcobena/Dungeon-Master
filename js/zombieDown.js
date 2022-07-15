@@ -6,7 +6,7 @@ class ZombieDown {
       this.y = canvas.height;
       this.w = 55;
       this.h = 90;
-      this.speed = 2;
+      this.speed = 4;
     }
   
     drawZombieDown = () => {
