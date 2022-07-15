@@ -5,7 +5,7 @@ class RogueKnight {
     this.image.src = "./src/images/rogue-knight-sprite.png"
     this.x = 390;
     this.y = 550;
-    this.w = 40; 
+    this.w = 50; 
     this.h = 100;
     this.speedX = 10;
     this.speedY = 10;

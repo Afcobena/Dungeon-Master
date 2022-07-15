@@ -4,8 +4,8 @@ class ZombieRight {
     this.image.src = srcParam;
     this.x = canvas.width;
     this.y = yParam;
-    this.w = 55;
-    this.h = 90;
+    this.w = 50;
+    this.h = 85;
     this.speed = 2;
   }
 

@@ -5,14 +5,14 @@ const ctx = canvas.getContext("2d");
 
 // elementos de DOM
 
-const splashScreenDOM = document.querySelector("#splash-screen");
-const startBtn = document.querySelector("#start-btn");
+const introScreenDOM = document.querySelector("#intro-screen");
+const startBtn = document.querySelector(".start-btn");
 const gameOverScreenDOM = document.querySelector("#gameover-screen")
 const restartBtn = document.querySelector("#restart-btn")
+const scoreCaseDOM = document.querySelector("#score")
 const scoreUpdateDOM = document.querySelector(".score-value")
-const pauseBtn = document.querySelectorAll("#pause-btn")
-const healthBarDOM = document.querySelectorAll(".bar")
-/* const gameScreenDOM = document.querySelectorAll("#game-screen") */
+/* const pauseBtn = document.querySelectorAll("#pause-btn") */
+const gameScreenDOM = document.querySelectorAll("#game-screen")
 
 // variables globales del juego
 let game; 
@@ -20,35 +20,38 @@ let game;
 //gameMusic
 
 const gameAudio = new Audio("./src/audio/jeremy-soule-dragonbornNEW.mp3")
-gameAudio.volume = 0.2;
+gameAudio.volume = 0.5;
 gameAudio.preload = "auto"
 gameAudio.load()
 
-const trapAudio = new Audio()
-trapAudio.volume = 0.2;
+const trapAudio = new Audio("./src/audio/sword-start.mp3")
+trapAudio.volume = 0.5;
 trapAudio.preload = "auto";
 trapAudio.load()
 
 
 // * STATE MANAGEMENT FUNCTIONS
 
+  
+
+
 
 const startGame = () => {
-  console.log("intentando inicar el juego");
-  splashScreenDOM.style.display = "none";
+  introScreenDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
-/*   gameScreenDOM.style.display = "flex"; */
+  
   
   restartBtn.style.display = "flex";
   canvas.style.display = "block";
+/*   scoreUpdateDOM.style.display = "none";
 /*   healthBarDOM.innerHTML = 3; */
 
   gameAudio.load()
   trapAudio.load()
   gameAudio.play()
+  trapAudio.play()
 
   game = new Game()
-  console.log(game)
   game.gameLoop()
 };
 
@@ -101,7 +104,7 @@ window.addEventListener("keyup", (event) => {
 })
 
 window.addEventListener("keydown", (event) => {
-  if (event.code === "KeyF") {
+  if (event.code === "KeyJ" || event.code === "KeyG") {
     game.throwSpear();
   }
 })

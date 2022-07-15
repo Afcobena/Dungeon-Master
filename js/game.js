@@ -14,6 +14,14 @@ class Game {
     this.isGameOn = true;
     this.isGamePaused = false;
     }
+    
+/*     introScreen = () => {
+      canvas.style.display = "none"
+      introScreenDOM.style.display = "flex"
+      scoreCaseDOM = "none"
+      scoreUpdateDOM = "none"
+
+    } */
 
   scoreUpdate = () => {
     if(this.frameCounter % 60 === 0 && this.frameCounter !== 0) {
@@ -44,6 +52,8 @@ class Game {
   
         let newZombieLeftUp = new ZombieLeft(randomPositionYUp, "./src/images/zombie-from-left.png")
         this.zombieLeftArr.push(newZombieLeftUp)
+
+      
 
         //------------------FOLLOW FUNCTION---------------------------
 
@@ -98,6 +108,7 @@ class Game {
       this.spearArr.push(newSpear)
       // crear un nuevo elemento y meterlo en el array
   }
+
 
   gameOver = () => {
       this.isGameOn = false;
@@ -167,6 +178,7 @@ class Game {
             eachSpear.h + eachSpear.y > eachZombie.y) {
               this.spearArr.splice(index, 1)
               this.zombieUpArr.splice(indexZU, 1)
+              this.score += 25;
           }
       })
       this.zombieRightArr.forEach((eachZombieR, indexZR) => {
@@ -176,6 +188,7 @@ class Game {
             eachSpear.h + eachSpear.y > eachZombieR.y) {
               this.spearArr.splice(index, 1)
               this.zombieRightArr.splice(indexZR, 1)
+              this.score += 25;
             }
       })
       this.zombieDownArr.forEach((eachZombie, indexZD) => {
@@ -185,6 +198,7 @@ class Game {
             eachSpear.h + eachSpear.y > eachZombie.y) {
               this.spearArr.splice(index, 1)
               this.zombieDownArr.splice(indexZD, 1)
+              this.score += 25;
           }
       })
       this.zombieLeftArr.forEach((eachZombie, indexZL) => {
@@ -194,6 +208,7 @@ class Game {
             eachSpear.h + eachSpear.y > eachZombie.y) {
               this.spearArr.splice(index, 1)
               this.zombieLeftArr.splice(indexZL, 1)
+              this.score += 25;
             }
       })
     })
@@ -273,3 +288,21 @@ class Game {
 
   
 }
+
+
+/* scoreUpdate = () => {
+  if(this.frameCounter % 60 === 0 && this.frameCounter !== 0) {
+    this.score += 1;
+
+    scoreUpdateDOM.innerText = this.score;
+  }
+  else if(this.frameCounter === 0) {
+    this.score = 0;
+    scoreUpdateDOM.innerText = this.score;
+  }      
+}
+
+timeUpdate = () => {
+  timeUpdateDOM.innerText = this.time;
+
+} */

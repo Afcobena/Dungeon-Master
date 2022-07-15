@@ -4,8 +4,8 @@ class ZombieDown {
       this.image.src = srcParam;
       this.x = xParam;
       this.y = canvas.height;
-      this.w = 70;
-      this.h = 100;
+      this.w = 55;
+      this.h = 90;
       this.speed = 2;
     }
   

@@ -4,8 +4,8 @@ class ZombieUp {
     this.image.src = srcParam;
     this.x = xParam;
     this.y = 0;
-    this.w = 70;
-    this.h = 100;
+    this.w = 75;
+    this.h = 85;
     this.speed = 2;
   }
 

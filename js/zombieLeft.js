@@ -4,8 +4,8 @@ class ZombieLeft {
       this.image.src = srcParam;
       this.x = 0;
       this.y = yParam;
-      this.w = 70;
-      this.h = 100;
+      this.w = 60;
+      this.h = 90;
       this.speed = 3;
 
       //-----------------------------FUNCTION FOLLOW-------------------

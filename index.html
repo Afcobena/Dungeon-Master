@@ -4,32 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flappy Bird</title>
+  <title>Dungeon Master</title>
   <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
 
   <div class="container">
 
-    <!-- SPLASH SCREEN -->
-    <div id="splash-screen" class="container">
-      <img src="./src/images/start-game.png" width="800" alt="logo">
-      <button id="start-btn">Prepare to die!</button>
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen">
+      <img id="intro-image" src="./src/images/start-game.png" width="1000" alt="logo">
+      <button class="start-btn"><span>Prepare your Weapons!</span></button>
     </div>
     
     <!-- GAME SCREEN -->
     <div id="game-screen">
-      <canvas id="my-canvas" width="800" height="800"></canvas>
+<!--       <img id="game-image" src="./src/images/wasd.png" width="350"  -->
       <div id="hud">
-        <button id="pause-btn">PAUSE</button>
-        <p id="score">SCORE<span class="score-value">0</span></p>
-        <p id="healthBarDOM">LIFE<span class="bar">3</span> </p>
-      </div>
+        <!--         <button id="pause-btn">PAUSE</button> -->
+                <p id="score">SCORE <span style="padding-left:50px;"></span><span class="score-value"> 0</span> </p>
+        <!--         <p id="time">TIME <span class="time-value">0</span></p> -->
+              </div>
+      <canvas id="my-canvas" width="800" height="800"></canvas>
+<!--       <img id="game-image2" src="./src/images/arrows.png" width="350" --> 
+
     </div>
     
     <!-- GAME OVER SCREEN -->
-    <div id="gameover-screen" class="container">
-      <img src="./src/images/game-over.png" width="800" alt="logo">
+    <div id="gameover-screen">
+      <img id="gameover-image" src="./src/images/game-over.png" width="900" alt="logo">
       <button id="restart-btn">Play Again!</button>
     </div>
 
