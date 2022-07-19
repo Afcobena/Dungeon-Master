@@ -6,7 +6,7 @@ class ZombieRight {
     this.y = yParam;
     this.w = 50;
     this.h = 85;
-    this.speed = 4;
+    this.speed = 3.2;
   }
 
   drawZombieRight = () => {

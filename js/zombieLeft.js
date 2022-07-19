@@ -6,7 +6,7 @@ class ZombieLeft {
       this.y = yParam;
       this.w = 60;
       this.h = 90;
-      this.speed = 5;
+      this.speed = 4.2;
 
       //-----------------------------FUNCTION FOLLOW-------------------
       /*this.directionX = 1;
