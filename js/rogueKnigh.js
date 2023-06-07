@@ -7,29 +7,10 @@ class RogueKnight {
     this.y = 390;
     this.w = 50; 
     this.h = 100;
-    this.speedX = 10;
-    this.speedY = 10;
-    this.lifes = 3;
-    this.teclasPress = {
-      ArrowLeft: false,
-      ArrowRight: false,
-      ArrowUp: false,
-      ArrowDown: false
-      
-    }
-
-    
-
-    this.upArr = ["./src/images/upKnigth/Up-1.png", "./src/images/upKnigth/Up-2.png", "./src/images/upKnigth/Up-3.png", "./src/images/upKnigth/Up-4.png", "./src/images/upKnigth/Up-5.png", "./src/images/upKnigth/Up-6.png"];
-    this.upRightArr = [];
-    this.rightArr = ["./src/images/rightKnight/Right-1.png", "./src/images/rightKnight/Right-2.png", "./src/images/rightKnight/Right-3.png", "./src/images/rightKnight/Right-4.png", "./src/images/rightKnight/Right-5.png", "./src/images/rightKnight/Right-6.png"];
-    this.downRightArr = [];
-    this.downArr = ["./src/images/downKnight/Down-1.png", "./src/images/downKnight/Down-2.png", "./src/images/downKnight/Down-3.png", "./src/images/downKnight/Down-4.png", "./src/images/downKnight/Down-5.png", "./src/images/downKnight/Down-6.png"];
-    this.downLeftArr = [];
-    this.leftArr = ["./src/images/leftKnight/Left-1.png", "./src/images/leftKnight/Left-2.png", "./src/images/leftKnight/Left-3.png", "./src/images/leftKnight/Left-4.png", "./src/images/leftKnight/Left-5.png", "./src/images/leftKnight/Left-6.png"];
-    this.upLeftArr = [];
-    this.arrIndex = 0;
-
+    this.vx = 0;
+    this.vy = 0;
+    this.hp = 100;
+    this.alive = true;
 
     //vel x vel y de los enemygos arcotangente de ambal delta del jugador, y a X ceno de arco tangente e Y coseno de arco tangente
 
@@ -40,86 +21,46 @@ class RogueKnight {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
   }
 
-  //-------------------------------------MOVIMIENTO EN LOS 8 EJES----------------------------------
+  updatePlayer = () => {
+    this.drawRogueKnight();
+    this.x += this.vx;
+    this.y += this.vy;
 
-  rogueKnightMoveDown = () => {
-    if (this.teclasPress.ArrowDown === true) {
-      this.y += this.speedY
-      this.image.src = "./src/images/downKnight/Down-1.png"
+    if (this.x + this.w > canvas.width) {
+      this.x = canvas.width - 30;
+    } else if (this.x < 0) {
+      this.x = 1;
     }
-    
+    if (this.y + this.h > canvas.height) {
+      this.y = canvas.height - 40;
+    } else if (this.y < 0) {
+      this.y = 1;
+    }
+  };
+}
+
+
+
+class Spear {
+  constructor(vx, vy) {
+    this.image = new Image();
+    this.image.src = "./src/images/spear-image-up.png";
+    this.x = game.rogueKnight.x + game.rogueKnight.w / 2;
+    this.y = game.rogueKnight.y + game.rogueKnight.h / 2;
+    this.w = 50;
+    this.h = 50;
+    this.vx = vx * frameRate;
+    this.vy = vy * frameRate;
   }
 
-  rogueKnightMoveForward = () => {
-    if (this.teclasPress.ArrowUp === true) {
-      this.y -= this.speedY
-      this.image.src = "./src/images/upKnigth/Up-1.png"
-    }
+  drawSpear = () => {
+    ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+  };
 
-  }
+  updateSpear = () => {
+    this.drawSpear();
+    this.x += this.vx;
+    this.y += this.vy;
+  };
 
-  rogueKnightMoveLeft = () => {
-    if (this.teclasPress.ArrowLeft === true) {
-      this.x -= this.speedX
-      this.image.src = "./src/images/leftKnight/Left-1.png"
-    }
-
-  }
-
-  rogueKnightMoveRight = () => {
-    if (this.teclasPress.ArrowRight === true) {
-      this.x += this.speedX
-      this.image.src = "./src/images/rightKnight/Right-1.png"
-
-    }
-
-  }
-  // hacer un for each para que itere por cada uno da de las fotos
-
-  // tengo que crear una function update image con 8 condicionales y que vayan recoriendo todos los lados
-
-  // hacer un bucle que entre en el indice del array y me devuelva el la siguiente imagen
-
-  updateImage = () => {
-    if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-        this.image.src = this.upArr.forEach((eachImg) => {
-        eachImg.updateImage()
-      })
-    }
-    if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-        this.upRightArr = this.arrIndex
-      }
-
-    if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === false) {
-        this.image.src = this.rightArr.forEach((eachImg) => {
-        eachImg.updateImage()
-      })
-    }
-
-    if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === true && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === false) {
-        this.downRightArr= this.arrIndex
-      }
-
-    if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === false) {
-      this.image.src = this.downArr.forEach((eachImg) => {
-        eachImg.updateImage()
-      })
-    }
-
-    if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === true && this.teclasPress.ArrowLeft === true) {
-        this.downLeftArr = this.arrIndex
-      }
-
-    if (this.teclasPress.ArrowUp === false && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
-        this.image.src = this.leftArr.forEach((eachImg) => {
-          eachImg.updateImage()
-        })
-      }
-
-    if (this.teclasPress.ArrowUp === true && this.teclasPress.ArrowRight === false && teclasPress.ArrowDown === false && this.teclasPress.ArrowLeft === true) {
-        this.upLeftArr = this.arrIndex
-      }
-      
-  }
-      
-} 
+}

@@ -13,6 +13,9 @@ class Game {
 
     this.isGameOn = true;
     this.isGamePaused = false;
+/*     this.startTime = performance.now();
+    this.frames = 0;
+    this.FPSNormal = 1; */
     }
     
 /*     introScreen = () => {
@@ -97,19 +100,9 @@ class Game {
       }
     }) 
   } */
+
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
-  throwSpear = () => {
-      let positionX = this.rogueKnight.x
-      let positionY = this.rogueKnight.y
-      
-      let newSpear = new Spear(positionX, positionY, "./src/images/bearTrap.png")
-      //condicional y la direccion del spear tiene que estar en game y pasar a la clase
-      // a donde esta viendo el usario
-      if (this.spearArr.length < 5) {
-      this.spearArr.push(newSpear)
-      }
-      // crear un nuevo elemento y meterlo en el array
-  }
+
 
 
   gameOver = () => {
@@ -120,20 +113,7 @@ class Game {
       gameAudio.pause()
   }
 
-  rogueKnightWallCollision = () => {
-    if(this.rogueKnight.x + this.rogueKnight.w > canvas.width) {
-      this.rogueKnight.x =canvas.width - this.rogueKnight.w
-    }
-    else if (this.rogueKnight.y + this.rogueKnight.h > canvas.height) {
-      this.rogueKnight.y =canvas.height - this.rogueKnight.h
-    }
-    else if (this.rogueKnight.x < 0) {
-      this.rogueKnight.x = 0
-    }
-    else if (this.rogueKnight.y < 0) {
-      this.rogueKnight.y = 0
-    }
-  }
+
 
   rogueKnightEnemyCollision = () => {
       this.zombieRightArr.forEach((eachZombie, index) => {
@@ -171,7 +151,7 @@ class Game {
       })
   }
 
-  enemiesSpearCollision = () => {
+/*   enemiesSpearCollision = () => {
     this.spearArr.forEach((eachSpear, index) => {
       this.zombieUpArr.forEach((eachZombie, indexZU) => {
         if (eachSpear.x < eachZombie.x + eachZombie.w &&
@@ -214,7 +194,7 @@ class Game {
             }
       })
     })
-}
+} */
 
 
   gameLoop = () => {
@@ -228,13 +208,8 @@ class Game {
     // 2. Movimientos y acciones de los elementos
 
 
-    this.rogueKnight.rogueKnightMoveDown()
-    this.rogueKnight.rogueKnightMoveForward()
-    this.rogueKnight.rogueKnightMoveLeft()
-    this.rogueKnight.rogueKnightMoveRight()
-    this.rogueKnightEnemyCollision()
-    this.rogueKnightWallCollision()
-    this.enemiesSpearCollision()
+
+/*     this.rogueKnightEnemyCollision() */
     
     this.automaticAddEnemiesRight()
     this.automaticAddEnemiesLeft()
@@ -243,7 +218,7 @@ class Game {
 
 
     this.spearArr.forEach((eachSpear) => {
-      eachSpear.spearMove()
+      eachSpear.updateSpear()
     })
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.moveZombieRight()
@@ -263,10 +238,10 @@ class Game {
 
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
 
-    this.rogueKnight.drawRogueKnight();
+    this.rogueKnight.updatePlayer();
     
     this.spearArr.forEach((eachSpear) => {
-      eachSpear.drawSpear()
+      eachSpear.updateSpear()
     })
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.drawZombieRight()

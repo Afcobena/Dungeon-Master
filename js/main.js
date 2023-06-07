@@ -16,6 +16,9 @@ const gameScreenDOM = document.querySelectorAll("#game-screen")
 
 // variables globales del juego
 let game; 
+let deltaX;
+let deltaY;
+let frameRate = 0;
 
 //gameMusic
 
@@ -39,11 +42,12 @@ trapAudio.load()
 const startGame = () => {
   introScreenDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
-  
+  scoreCaseDOM.style.display = "none"
+  scoreUpdateDOM.style.display = "none";
   
   restartBtn.style.display = "flex";
   canvas.style.display = "block";
-/*   scoreUpdateDOM.style.display = "none";
+
 /*   healthBarDOM.innerHTML = 3; */
 
   gameAudio.load()
@@ -73,38 +77,84 @@ startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", startGame);
 /* pauseBtn.addEventListener("click", pauseGame); */
 
-window.addEventListener("keydown", (event) => {
-  if (event.code === "KeyA" || event.code === "ArrowLeft") {
-    game.rogueKnight.teclasPress.ArrowLeft = true;
-  } 
-  if (event.code === "KeyD" || event.code === "ArrowRight") {
-    game.rogueKnight.teclasPress.ArrowRight = true;
-  } 
-  if (event.code === "KeyW" || event.code === "ArrowUp") {
-    game.rogueKnight.teclasPress.ArrowUp = true; 
-  } 
-  if (event.code === "KeyS" || event.code === "ArrowDown") {
-    game.rogueKnight.teclasPress.ArrowDown = true; 
+// Move on keydown
+window.addEventListener("keydown", ({ keyCode }) => {
+  switch (keyCode) {
+    case 87:
+      game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
+      game.rogueKnight.vy = -2.5 * frameRate;
+      break;
+    case 68:
+      game.rogueKnight.image.src = "./src/images/Right-2.png";
+      game.rogueKnight.vx = 2.5 * frameRate;
+      break;
+    case 83:
+      game.rogueKnight.image.src = "./src/images//Down-3.png";
+      game.rogueKnight.vy = 2.5 * frameRate;
+      break;
+    case 65:
+      game.rogueKnight.image.src = "./src/images/Left-4.png";
+      game.rogueKnight.vx = -2.5 * frameRate;
+      break;
   }
-})
+});
 
-window.addEventListener("keyup", (event) => {
-  if (event.code === "KeyA" || event.code === "ArrowLeft") {
-    game.rogueKnight.teclasPress.ArrowLeft = false;
-  } 
-  if (event.code === "KeyD" || event.code === "ArrowRight") {
-    game.rogueKnight.teclasPress.ArrowRight = false;
-  } 
-  if (event.code === "KeyW" || event.code === "ArrowUp") {
-    game.rogueKnight.teclasPress.ArrowUp = false; 
-  } 
-  if (event.code === "KeyS" || event.code === "ArrowDown") {
-    game.rogueKnight.teclasPress.ArrowDown = false; 
+// Stop on keyup
+window.addEventListener("keyup", ({ keyCode }) => {
+  switch (keyCode) {
+    case 87:
+      game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
+      game.rogueKnight.vy = 0;
+      break;
+    case 68:
+      game.rogueKnight.image.src = "./src/images/Right-2.png";
+      game.rogueKnight.vx = 0;
+      break;
+    case 83:
+      game.rogueKnight.image.src = "./src/images//Down-3.png";
+      game.rogueKnight.vy = 0;
+      break;
+    case 65:
+      game.rogueKnight.image.src = "./src/images/Left-4.png";
+      game.rogueKnight.vx = 0;
+      break;
   }
-})
+});
 
-window.addEventListener("keydown", (event) => {
-  if (event.code === "KeyJ" || event.code === "KeyG") {
-    game.throwSpear();
+
+
+
+  // Código para disparar la bala hacia la posición del click
+/* canvas.addEventListener('click', function(event) {
+  const x = event.clientX - canvas.offsetLeft;
+  const y = event.clientY - canvas.offsetTop;
+  const direccionX = x - rogueKnigh.x;
+  const direccionY = y - rogueKnigh.y;
+  const distancia = Math.sqrt(direccionX * direccionX + direccionY * direccionY);
+  const velocidadX = direccionX / distancia * 10;
+  const velocidadY = direccionY / distancia * 10;
+  const spear = new Spear(rogueKnigh.x, rogueKnigh.y, velocidadX, velocidadY);
+
+
+  game.spear.push(newSpear)
+}); */
+
+canvas.addEventListener("click", (event) => {
+  deltaX = event.offsetX - game.rogueKnight.x;
+  deltaY = event.offsetY - game.rogueKnight.y;
+
+  let rotation = Math.atan2(deltaX, deltaY);
+
+  let ProjectileVx = Math.sin(rotation) * 6;
+  let ProjectileVy = Math.cos(rotation) * 6;
+  let newSepar = new Spear(ProjectileVx, ProjectileVy);
+
+  if (deltaX > 0) {
+    game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
+  } else if (deltaX < 0) {
+    game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
   }
-})
+
+  game.spearArr.push(newSepar);
+  console.log("clicking")
+});
