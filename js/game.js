@@ -56,18 +56,6 @@ class Game {
         let newZombieLeftUp = new ZombieLeft(randomPositionYUp, "./src/images/zombie-from-left.png")
         this.zombieLeftArr.push(newZombieLeftUp)
 
-      
-
-        //------------------FOLLOW FUNCTION---------------------------
-
-        /* this.zombieLeftArr.forEach((eachZombie) => {
-          if(eachZombie.x > this.rogueKnight.x) {
-            eachZombie.directionX = -1
-          }
-          else if(eachZombie.x < this.rogueKnight.x) {
-            eachZombie.directionX = 1
-          }
-        }) */
   }
 }
 
@@ -91,29 +79,34 @@ class Game {
   }
 }
 
-/*   enemyFollow = () => {
-    this.zombieLeftArr.forEach((eachZombie) => {
-      if(eachZombie.x > this.rogueKnight.x) {
-        eachZombie.x = -1
-      } else if(eachZombie.x < this.rogueKnight.x) {
-        eachZombie.x = +1
-      }
-    }) 
-  } */
-
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
+throwSpear = () => {
+  let positionX = this.rogueKnight.x
+  let positionY = this.rogueKnight.y
 
-
-
-  gameOver = () => {
-      this.isGameOn = false;
-      canvas.style.display = "none"
-      gameOverScreenDOM.style.display = "flex"
-  /*     gameScreenDOM.style.display = "none" */
-      gameAudio.pause()
+  let newSpear = new Spear(positionX, positionY)
+  //condicional y la direccion del spear tiene que estar en game y pasar a la clase
+  // a donde esta viendo el usario
+  if (this.spearArr.length < 5) {
+  this.spearArr.push(newSpear)
   }
+  // crear un nuevo elemento y meterlo en el array
+}
 
-
+  rogueKnightWallCollision = () => {
+    if(this.rogueKnight.x + this.rogueKnight.w > canvas.width) {
+      this.rogueKnight.x =canvas.width - this.rogueKnight.w
+    }
+    else if (this.rogueKnight.y + this.rogueKnight.h > canvas.height) {
+      this.rogueKnight.y =canvas.height - this.rogueKnight.h
+    }
+    else if (this.rogueKnight.x < 0) {
+      this.rogueKnight.x = 0
+    }
+    else if (this.rogueKnight.y < 0) {
+      this.rogueKnight.y = 0
+    }
+  }
 
   rogueKnightEnemyCollision = () => {
       this.zombieRightArr.forEach((eachZombie, index) => {
@@ -151,51 +144,58 @@ class Game {
       })
   }
 
-/*   enemiesSpearCollision = () => {
-    this.spearArr.forEach((eachSpear, index) => {
-      this.zombieUpArr.forEach((eachZombie, indexZU) => {
-        if (eachSpear.x < eachZombie.x + eachZombie.w &&
-            eachSpear.x + eachSpear.w > eachZombie.x &&
-            eachSpear.y < eachZombie.y + eachZombie.h &&
-            eachSpear.h + eachSpear.y > eachZombie.y) {
-              this.spearArr.splice(index, 1)
-              this.zombieUpArr.splice(indexZU, 1)
-              this.score += 25;
-          }
-      })
-      this.zombieRightArr.forEach((eachZombieR, indexZR) => {
-        if (eachSpear.x < eachZombieR.x + eachZombieR.w &&
-            eachSpear.x + eachSpear.w > eachZombieR.x &&
-            eachSpear.y < eachZombieR.y + eachZombieR.h &&
-            eachSpear.h + eachSpear.y > eachZombieR.y) {
-              this.spearArr.splice(index, 1)
-              this.zombieRightArr.splice(indexZR, 1)
-              this.score += 25;
-            }
-      })
-      this.zombieDownArr.forEach((eachZombie, indexZD) => {
-        if (eachSpear.x < eachZombie.x + eachZombie.w &&
-            eachSpear.x + eachSpear.w > eachZombie.x &&
-            eachSpear.y < eachZombie.y + eachZombie.h &&
-            eachSpear.h + eachSpear.y > eachZombie.y) {
-              this.spearArr.splice(index, 1)
-              this.zombieDownArr.splice(indexZD, 1)
-              this.score += 25;
-          }
-      })
-      this.zombieLeftArr.forEach((eachZombie, indexZL) => {
-        if (eachSpear.x < eachZombie.x + eachZombie.w &&
-            eachSpear.x + eachSpear.w > eachZombie.x &&
-            eachSpear.y < eachZombie.y + eachZombie.h &&
-            eachSpear.h + eachSpear.y > eachZombie.y) {
-              this.spearArr.splice(index, 1)
-              this.zombieLeftArr.splice(indexZL, 1)
-              this.score += 25;
-            }
-      })
+  enemiesSpearCollision = () => {
+  this.spearArr.forEach((eachSpear, index) => {
+    this.zombieUpArr.forEach((eachZombie, indexZU) => {
+      if (eachSpear.x < eachZombie.x + eachZombie.w &&
+          eachSpear.x + eachSpear.w > eachZombie.x &&
+          eachSpear.y < eachZombie.y + eachZombie.h &&
+          eachSpear.h + eachSpear.y > eachZombie.y) {
+            this.spearArr.splice(index, 1)
+            this.zombieUpArr.splice(indexZU, 1)
+            this.score += 25;
+        }
     })
-} */
+    this.zombieRightArr.forEach((eachZombieR, indexZR) => {
+      if (eachSpear.x < eachZombieR.x + eachZombieR.w &&
+          eachSpear.x + eachSpear.w > eachZombieR.x &&
+          eachSpear.y < eachZombieR.y + eachZombieR.h &&
+          eachSpear.h + eachSpear.y > eachZombieR.y) {
+            this.spearArr.splice(index, 1)
+            this.zombieRightArr.splice(indexZR, 1)
+            this.score += 25;
+          }
+    })
+    this.zombieDownArr.forEach((eachZombie, indexZD) => {
+      if (eachSpear.x < eachZombie.x + eachZombie.w &&
+          eachSpear.x + eachSpear.w > eachZombie.x &&
+          eachSpear.y < eachZombie.y + eachZombie.h &&
+          eachSpear.h + eachSpear.y > eachZombie.y) {
+            this.spearArr.splice(index, 1)
+            this.zombieDownArr.splice(indexZD, 1)
+            this.score += 25;
+        }
+    })
+    this.zombieLeftArr.forEach((eachZombie, indexZL) => {
+      if (eachSpear.x < eachZombie.x + eachZombie.w &&
+          eachSpear.x + eachSpear.w > eachZombie.x &&
+          eachSpear.y < eachZombie.y + eachZombie.h &&
+          eachSpear.h + eachSpear.y > eachZombie.y) {
+            this.spearArr.splice(index, 1)
+            this.zombieLeftArr.splice(indexZL, 1)
+            this.score += 25;
+          }
+    })
+  })
+}
 
+gameOver = () => {
+  this.isGameOn = false;
+  canvas.style.display = "none"
+  gameOverScreenDOM.style.display = "flex"
+/*     gameScreenDOM.style.display = "none" */
+  gameAudio.pause()
+}
 
   gameLoop = () => {
 
@@ -206,10 +206,14 @@ class Game {
 
 
     // 2. Movimientos y acciones de los elementos
-
-
-
-/*     this.rogueKnightEnemyCollision() */
+    this.rogueKnight.rogueKnightMoveDown()
+    this.rogueKnight.rogueKnightMoveForward()
+    this.rogueKnight.rogueKnightMoveLeft()
+    this.rogueKnight.rogueKnightMoveRight()
+    /* this.rogueKnightEnemyCollision() */
+    this.rogueKnightWallCollision()
+    this.enemiesSpearCollision()
+    
     
     this.automaticAddEnemiesRight()
     this.automaticAddEnemiesLeft()
@@ -238,11 +242,11 @@ class Game {
 
     ctx.drawImage(this.dungeon, 0, 0, canvas.width, canvas.height);
 
-    this.rogueKnight.updatePlayer();
+    this.rogueKnight.drawRogueKnight();
+
+    /* this.spear.drawSpear(); */
+
     
-    this.spearArr.forEach((eachSpear) => {
-      eachSpear.updateSpear()
-    })
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.drawZombieRight()
     })
