@@ -14,36 +14,37 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
 
   }
 
 
   #intro-screen {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 7rem;
+    width: 800px;
+    height: 800px;
+    position: relative;
+
   }
 
 
   #intro-image {
     border: 5px solid red;
-    position: absolute;
+    width: 100%; 
   }
 
 
   .start-btn {
-    display: flex;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+
     background-color: transparent;
     border: none;
     width: 10.5em;
     height: 3.5em;
     color: white;
-    justify-content: center;
-    align-items: center;
     font-size: 2.2em;
     letter-spacing: 5px;
     font-weight: 300;
@@ -51,7 +52,7 @@ body {
     cursor: pointer;
     transition: .3s ease all;
     border-radius: 5px;
-    margin: 200px 20px 20px 20px;
+
     
 
 }
@@ -63,12 +64,8 @@ body {
   }
 
 .instructions{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  position: relative;
+  position: absolute;
+  top: 0;
   background-color: transparent;
   border: 3px solid blue;
   width: 15.5em;
@@ -114,7 +111,7 @@ body {
 
 
   #hud {
-
+display: none;
   }
 
   #game-image2 {
@@ -123,8 +120,7 @@ body {
 
 
   #score {
-    display: flex;
-    justify-content: center;
+    position: absolute;
     font-family: 'kings';
     font-size: 30px;
     letter-spacing: 4px;

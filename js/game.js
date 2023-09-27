@@ -16,6 +16,7 @@ class Game {
     this.startTime = performance.now();
     this.frames = 0;
     this.FPSNormal = 1;
+    this.eliminationCounter = 0
     }
     
     introScreen = () => {
@@ -80,7 +81,7 @@ class Game {
 }
 
 //--------------------------------------------FUNCIÓN POR TERMINAR-------------------
-throwSpear = () => {
+/* throwSpear = () => {
   let positionX = this.rogueKnight.x
   let positionY = this.rogueKnight.y
 
@@ -90,6 +91,93 @@ throwSpear = () => {
   this.spearArr.push(newSpear)
   }
   
+} */
+
+
+throwSpear = () => {
+  let positionX = this.rogueKnight.x;
+  let positionY = this.rogueKnight.y;
+
+  let newSpear = new Spear(positionX, positionY, "./src/images/bearTrap.png");
+
+  if (this.spearArr.length < 5) {
+    this.spearArr.push(newSpear);
+  }
+
+  // Check if the spear collides with any enemy and eliminate them
+  this.zombieUpArr.forEach((zombie, index) => {
+    if (
+      newSpear.x < zombie.x + zombie.w &&
+      newSpear.x + newSpear.w > zombie.x &&
+      newSpear.y < zombie.y + zombie.h &&
+      newSpear.y + newSpear.h > zombie.y
+    ) {
+      this.spearArr.splice(this.spearArr.indexOf(newSpear), 1); // Remove the spear
+      this.zombieUpArr.splice(index, 1); // Remove the eliminated zombie
+      this.score += 25; // Increase the score
+      // Update your elimination counter here
+      updateEliminationCounter();
+    }
+  });
+
+  this.zombieLeftArr.forEach((zombie, index) => {
+    if (
+      newSpear.x < zombie.x + zombie.w &&
+      newSpear.x + newSpear.w > zombie.x &&
+      newSpear.y < zombie.y + zombie.h &&
+      newSpear.y + newSpear.h > zombie.y
+    ) {
+      this.spearArr.splice(this.spearArr.indexOf(newSpear), 1); // Remove the spear
+      this.zombieLeftArr.splice(index, 1); // Remove the eliminated zombie
+      this.score += 25; // Increase the score
+      // Update your elimination counter here
+      updateEliminationCounter();
+    }
+  });
+
+  this.zombieDownArr.forEach((zombie, index) => {
+    if (
+      newSpear.x < zombie.x + zombie.w &&
+      newSpear.x + newSpear.w > zombie.x &&
+      newSpear.y < zombie.y + zombie.h &&
+      newSpear.y + newSpear.h > zombie.y
+    ) {
+      this.spearArr.splice(this.spearArr.indexOf(newSpear), 1); // Remove the spear
+      this.zombieDownArr.splice(index, 1); // Remove the eliminated zombie
+      this.score += 25; // Increase the score
+      // Update your elimination counter here
+      updateEliminationCounter();
+    }
+  });
+
+  this.zombieRightArr.forEach((zombie, index) => {
+    if (
+      newSpear.x < zombie.x + zombie.w &&
+      newSpear.x + newSpear.w > zombie.x &&
+      newSpear.y < zombie.y + zombie.h &&
+      newSpear.y + newSpear.h > zombie.y
+    ) {
+      this.spearArr.splice(this.spearArr.indexOf(newSpear), 1); // Remove the spear
+      this.zombieRightArr.splice(index, 1); // Remove the eliminated zombie
+      this.score += 25; // Increase the score
+      // Update your elimination counter here
+      updateEliminationCounter();
+    }
+  });
+
+};
+
+
+
+  // TODO function unfinished
+  
+  updateEliminationCounter = () => {
+  this.eliminationCounter++;
+  
+  const counterElement = document.getElementById("elimination-counter");
+  if (counterElement) {
+    counterElement.innerText = `Eliminations: ${this.eliminationCounter}`;
+  }
 }
 
   rogueKnightWallCollision = () => {
