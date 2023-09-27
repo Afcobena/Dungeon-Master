@@ -1,7 +1,7 @@
 class Spear {
-  constructor(positionX, positionY) {
+  constructor(positionX, positionY, srcParam) {
     this.image = new Image();
-    this.image.src = "./src/images/bearTrap.png";
+    this.image.src = srcParam;
     this.x = positionX;
     this.y = positionY;
     this.w = 50;

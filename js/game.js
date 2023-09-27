@@ -13,18 +13,18 @@ class Game {
 
     this.isGameOn = true;
     this.isGamePaused = false;
-/*     this.startTime = performance.now();
+    this.startTime = performance.now();
     this.frames = 0;
-    this.FPSNormal = 1; */
+    this.FPSNormal = 1;
     }
     
-/*     introScreen = () => {
+    introScreen = () => {
       canvas.style.display = "none"
       introScreenDOM.style.display = "flex"
       scoreCaseDOM = "none"
       scoreUpdateDOM = "none"
 
-    } */
+    }
 
   scoreUpdate = () => {
     if(this.frameCounter % 60 === 0 && this.frameCounter !== 0) {
@@ -84,13 +84,12 @@ throwSpear = () => {
   let positionX = this.rogueKnight.x
   let positionY = this.rogueKnight.y
 
-  let newSpear = new Spear(positionX, positionY)
-  //condicional y la direccion del spear tiene que estar en game y pasar a la clase
-  // a donde esta viendo el usario
+  let newSpear = new Spear(positionX, positionY, "./src/images/bearTrap.png")
+
   if (this.spearArr.length < 5) {
   this.spearArr.push(newSpear)
   }
-  // crear un nuevo elemento y meterlo en el array
+  
 }
 
   rogueKnightWallCollision = () => {
@@ -193,7 +192,7 @@ gameOver = () => {
   this.isGameOn = false;
   canvas.style.display = "none"
   gameOverScreenDOM.style.display = "flex"
-/*     gameScreenDOM.style.display = "none" */
+    gameScreenDOM.style.display = "none"
   gameAudio.pause()
 }
 
@@ -210,7 +209,7 @@ gameOver = () => {
     this.rogueKnight.rogueKnightMoveForward()
     this.rogueKnight.rogueKnightMoveLeft()
     this.rogueKnight.rogueKnightMoveRight()
-    /* this.rogueKnightEnemyCollision() */
+    this.rogueKnightEnemyCollision()
     this.rogueKnightWallCollision()
     this.enemiesSpearCollision()
     
@@ -222,7 +221,7 @@ gameOver = () => {
 
 
     this.spearArr.forEach((eachSpear) => {
-      eachSpear.updateSpear()
+      eachSpear.spearMove()
     })
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.moveZombieRight()
@@ -244,8 +243,9 @@ gameOver = () => {
 
     this.rogueKnight.drawRogueKnight();
 
-    /* this.spear.drawSpear(); */
-
+    this.spearArr.forEach((eachSpear) => {
+      eachSpear.drawSpear()
+    })
     
     this.zombieRightArr.forEach((eachZombie) => {
       eachZombie.drawZombieRight()
@@ -271,7 +271,7 @@ gameOver = () => {
 }
 
 
-/* scoreUpdate = () => {
+scoreUpdate = () => {
   if(this.frameCounter % 60 === 0 && this.frameCounter !== 0) {
     this.score += 1;
 
@@ -286,4 +286,4 @@ gameOver = () => {
 timeUpdate = () => {
   timeUpdateDOM.innerText = this.time;
 
-} */
+}

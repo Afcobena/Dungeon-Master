@@ -78,50 +78,6 @@ restartBtn.addEventListener("click", startGame);
 /* pauseBtn.addEventListener("click", pauseGame); */
 
 // Move on keydown
-/* window.addEventListener("keydown", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87:
-      game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
-      game.rogueKnight.vy = -2.5 * frameRate;
-      break;
-    case 68:
-      game.rogueKnight.image.src = "./src/images/Right-2.png";
-      game.rogueKnight.vx = 2.5 * frameRate;
-      break;
-    case 83:
-      game.rogueKnight.image.src = "./src/images//Down-3.png";
-      game.rogueKnight.vy = 2.5 * frameRate;
-      break;
-    case 65:
-      game.rogueKnight.image.src = "./src/images/Left-4.png";
-      game.rogueKnight.vx = -2.5 * frameRate;
-      break;
-  }
-}); */
-
-// Stop on keyup
-/* window.addEventListener("keyup", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87:
-      game.rogueKnight.image.src = "./src/images/rogue-knight-sprite.png";
-      game.rogueKnight.vy = 0;
-      break;
-    case 68:
-      game.rogueKnight.image.src = "./src/images/Right-2.png";
-      game.rogueKnight.vx = 0;
-      break;
-    case 83:
-      game.rogueKnight.image.src = "./src/images//Down-3.png";
-      game.rogueKnight.vy = 0;
-      break;
-    case 65:
-      game.rogueKnight.image.src = "./src/images/Left-4.png";
-      game.rogueKnight.vx = 0;
-      break;
-  }
-}); */
-
-
 window.addEventListener("keydown", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     game.rogueKnight.teclasPress.ArrowLeft = true;
@@ -137,6 +93,8 @@ window.addEventListener("keydown", (event) => {
   }
 })
 
+
+// Stop on keyup
 window.addEventListener("keyup", (event) => {
   if (event.code === "KeyA" || event.code === "ArrowLeft") {
     game.rogueKnight.teclasPress.ArrowLeft = false;
